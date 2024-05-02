@@ -23,10 +23,10 @@ jobs:
       working-directory: ./resume
       run: |
         lualatex main.tex
-        mv main.pdf frank_robert_resume_$(date +'%Y').pdf
+        mv main.pdf florence_wolfe_resume_$(date +'%Y').pdf
 
     - uses: EndBug/add-and-commit@v9 # You can change this to use a specific version.
       with:
         add: 'resume'
-        author_name: Frank Robert
-        author_email: frankie.robert@gmail.com
+        author_name: Florence Wolfe
+        author_email: florencewolfe@pm.me
