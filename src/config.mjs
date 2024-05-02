@@ -6,8 +6,7 @@ const CONFIG = {
   trailingSlash: false,
 
   title: "f4.lol - Flo's home",
-  description:
-    'Personal website for Flo, a software engineer and a student. I write about programming, tech, and life.',
+  description: 'Personal website for Flo, a software engineer and goofer. I write about programming, tech, and life.',
 
   defaultTheme: 'system', // Values: "system" | "light" | "dark" | "light:only" | "dark:only"
 
