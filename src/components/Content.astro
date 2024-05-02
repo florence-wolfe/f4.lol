@@ -51,7 +51,7 @@ of the list you'll find a love for electronic music, 3D printing, manga, speedru
     </section>
   </article>
 
-  <script>
+  <script is:inline>
     import chroma from 'chroma-js';
     const rootElement = document.documentElement;
 
@@ -67,7 +67,7 @@ of the list you'll find a love for electronic music, 3D printing, manga, speedru
         const badgeColor = chroma.oklch(...badgeOklch).hex();
         const labelColorEncoded = encodeURIComponent(labelColor);
         const badgeColorEncoded = encodeURIComponent(badgeColor);
-        console.log(chroma);
+        console.log({ chroma });
         console.log({ labelOklch, badgeOklch, labelColor, badgeColor, labelColorEncoded, badgeColorEncoded });
         const badgeUrl = `https://img.shields.io/endpoint?url=https%3A%2F%2Fpronoundb.org%2Fshields%2F65db97a4cf2d0494c7de8e98.json&style=flat&labelColor=${labelColorEncoded}&color=${badgeColorEncoded}`;
         const badge = document.getElementById('pronouns-badge') as HTMLImageElement;
