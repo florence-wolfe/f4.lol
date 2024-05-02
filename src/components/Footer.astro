@@ -8,6 +8,25 @@ interface SocialIcon {
   platform: string;
 }
 
+interface MailtoParams {
+  email: string;
+  subject: string;
+  body: string;
+}
+
+function generateMailtoLink({ email, subject, body }: MailtoParams): string {
+  let params = new URLSearchParams();
+  params.set('subject', subject);
+  params.set('body', body);
+
+  return `mailto:${email}?${params.toString()}`;
+}
+
+const mailtoParams: MailtoParams = {
+  email: 'frank@f4.lol',
+  subject: 'Hello from your website!',
+  body: 'Hi there! I just wanted to say...',
+};
 const socials: SocialIcon[] = [
   {
     platform: 'Twitter',
@@ -27,7 +46,7 @@ const socials: SocialIcon[] = [
   },
   {
     platform: 'Email',
-    url: 'mailto:',
+    url: generateMailtoLink(mailtoParams),
     icon: 'fa-solid fa-envelope',
   },
   {
