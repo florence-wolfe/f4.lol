@@ -20,9 +20,10 @@ jobs:
         sudo apt-get install -y texlive-latex-base texlive-fonts-recommended texlive-latex-recommended texlive-latex-extra
 
     - name: Compile LaTeX document
+      working-directory: ./resume
       run: |
         pdflatex main.tex
-        mv main.pdf resume/frank_robert_resume_$(date +'%Y').pdf
+        mv main.pdf frank_robert_resume_$(date +'%Y').pdf
 
     - name: Commit and push PDF to repository
       run: |
