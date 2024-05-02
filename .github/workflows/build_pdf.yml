@@ -4,6 +4,7 @@ on:
   push:
     paths:
     - '**.tex'
+  workflow_dispatch:
 
 jobs:
   build:
