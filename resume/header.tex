@@ -2,20 +2,24 @@
 \usepackage{geometry}
 \usepackage{titlesec}
 \usepackage{marvosym}
-\usepackage[usenames,dvipsnames]{color}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 \usepackage{verbatim}
 \usepackage{enumitem}
 \usepackage[hidelinks]{hyperref}
 \usepackage{fancyhdr}
 \usepackage[english]{babel}
 \usepackage{tabularx}
-\input{glyphtounicode}
+\usepackage{fontspec}
+\setmainfont{Georgia}
+\usepackage{fontawesome5}
 
 \pagestyle{fancy}
 \fancyhf{} % clear all header and footer fields
 \fancyfoot{}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
+
+\definecolor{themecolor}{RGB}{36, 60, 84}
 
 % Adjust margins using geometry
 \geometry{
@@ -35,11 +39,8 @@
 
 % Sections formatting
 \titleformat{\section}{
-  \vspace{-4pt}\scshape\raggedright\large
-}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
-
-% Ensure that generate pdf is machine readable/ATS parsable
-\pdfgentounicode=1
+  \vspace{-4pt}\scshape\raggedright\large\color{themecolor}
+}{}{0em}{}[\color{themecolor}\titlerule \vspace{-5pt}]
 
 % Custom commands
 \newcommand{\resumeItem}[1]{

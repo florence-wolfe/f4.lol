@@ -17,12 +17,12 @@ jobs:
     - name: Install TeXLive
       run: |
         sudo apt-get update
-        sudo apt-get install -y texlive-latex-base texlive-fonts-recommended texlive-latex-recommended texlive-latex-extra
+        sudo apt-get install -y texlive-latex-base texlive-fonts-recommended texlive-latex-recommended texlive-latex-extra texlive-luatex
 
     - name: Compile LaTeX document
       working-directory: ./resume
       run: |
-        pdflatex main.tex
+        lualatex main.tex
         mv main.pdf frank_robert_resume_$(date +'%Y').pdf
 
     - uses: EndBug/add-and-commit@v9 # You can change this to use a specific version.
