@@ -2,11 +2,19 @@
 import me from '~/assets/images/anime-self.png';
 ---
 
+<style>
+  #name {
+    -webkit-text-stroke: 2px hsl(var(--p));
+    text-shadow: -0.09em 0 0 hsl(var(--a)), 0.09em 0 0 hsl(var(--s));
+  }
+</style>
 <main class="grow hero bg-base-300 -z-10">
   <div class="hero-content text-left">
     <div class="max-w-md">
       <div class="flex">
-        <h1 class="text-5xl font-bold">Hey there! I'm <strong>Frank Robert</strong></h1>
+        <h1 class="text-5xl font-bold">
+          Hey there! I'm <strong id="name" class="italic text-primary-content">Frank Robert</strong>
+        </h1>
 
         <div class="avatar">
           <div class="w-24 rounded-full ring ring-secondary ring-offset-base-100 ring-offset-2">
@@ -16,9 +24,9 @@ import me from '~/assets/images/anime-self.png';
       </div>
       <p class="py-6">
         I'm a seasoned software engineer with a passion for all things tech. I have a loads of interests but at the top
-        of the list you'll find a love for electronic music, 3D Printing, manga, and gaming. This website is a digital
-        canvas of my life, skills, and passions. Take a look around, and if something sparks your interest, don't
-        hesitate to reach out on my socials. It's always a joy to connect and create with like-minded individuals.
+        of the list you'll find a love for electronic music, 3D printing, manga, speedrunning, and gaming. This website
+        is a digital canvas of my life, skills, and passions. Take a look around, and if something sparks your interest,
+        don't hesitate to reach out on my socials. It's always a joy to connect and create with like-minded individuals.
       </p>
     </div>
   </div>

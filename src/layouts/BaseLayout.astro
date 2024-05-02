@@ -16,7 +16,13 @@ const { language = 'en', textDirection = 'ltr' } = SITE;
     <style>
       html {
         font-size: 1rem;
-        font-size: clamp(1.5rem, -4vw + 1rem, 4rem);
+        font-size: clamp(1rem, 3.2vw, 1.5rem);
+      }
+      /* Scale fonts for devices with a 2x device pixel ratio */
+      @media (min-resolution: 2dppx) {
+        html {
+          font-size: 200%;
+        }
       }
     </style>
     <ThemeChangeScript />
