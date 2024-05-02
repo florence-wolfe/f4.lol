@@ -1,44 +1,32 @@
 ---
+const api = 'https://api.giphy.com/v1/gifs/random';
+const params = new URLSearchParams({
+  api_key: 'DsvIKKjpKtISHJuCoJQ6TteXDunt0yzT',
+  tag: 'cat',
+});
+const url = `${api}?${params.toString()}`;
 ---
 
-<button aria-label="Funny button" id="funny-button" onclick="
-modal.showModal()
-">funny button</button>
+<button
+  hx-get={url}
+  hx-trigger="click"
+  hx-ext="client-side-templates"
+  hx-target="#modal-image"
+  hx-swap="innerHTML"
+  mustache-template="image-template"
+  x-on:click="modal.showModal()"
+  aria-label="Funny button">funny button</button
+>
 
-<dialog role="dialog" aria-label="Funny button Modal" id="modal" class="modal">
+<dialog x-data role="dialog" aria-label="Funny button Modal" id="modal" class="modal">
   <form role="form" aria-label="Modal image and button container" method="dialog" class="modal-box w-auto">
     <button role="button" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">X</button>
-    <img id="funny-button-image" class="mask mask-squircle hidden" />
-
-    <span id="funny-button-loader" class="loading loading-infinity loading-lg hidden"></span>
+    <template id="image-template"><img src="{{data.images.fixed_height.url}}" class="mask mask-squircle" /></template>
+    <div id="modal-image">
+      <span class="loading loading-infinity loading-lg"></span>
+    </div>
   </form>
   <form method="dialog" class="modal-backdrop w-screen h-screen">
     <button>close</button>
   </form>
 </dialog>
-<script>
-  const api = 'https://api.giphy.com/v1/gifs/random';
-  const params = new URLSearchParams({
-    api_key: 'DsvIKKjpKtISHJuCoJQ6TteXDunt0yzT',
-    tag: 'cat',
-  });
-  const url = `${api}?${params.toString()}`;
-
-  const button = document.getElementById('funny-button')!;
-  button?.addEventListener('click', async () => {
-    const response = await fetch(url);
-    const result = await response.json();
-    const image = document.getElementById('funny-button-image') as HTMLImageElement;
-    const spinner = document.getElementById('funny-button-loader')!;
-    // Show spinner
-    spinner.style.display = 'block';
-    image.style.display = 'none';
-    image.src = result.data.images.fixed_height.url;
-    // Event listener for load event
-    image.addEventListener('load', () => {
-      // Hide spinner
-      spinner.style.display = 'none';
-      image.style.display = 'block';
-    });
-  });
-</script>

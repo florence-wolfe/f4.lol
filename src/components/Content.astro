@@ -15,10 +15,17 @@ of the list you'll find a love for electronic music, 3D printing, manga, speedru
   <article class="hero-content text-left">
     <section class="max-w-md">
       <header class="flex">
-        <h1 class="text-5xl font-bold">
+        <h1 x-data="{ swapped: false }" class="text-5xl font-bold">
           Hey there! I'm
 
-          <span tabindex="0" id="name-container" class="swap swap-flip" aria-pressed="false">
+          <span
+            x-on:mouseover="swapped = true"
+            x-on:mouseout="swapped = false"
+            x-bind:class="swapped ? 'swap-active' : ''"
+            tabindex="0"
+            aria-pressed="false"
+            class="swap swap-flip"
+          >
             <strong class="italic text-primary-content text-3d swap-off">Frank Robert</strong>
             <strong class="text-primary-content text-3d swap-on" aria-hidden="true">{phonetic}</strong>
           </span>
@@ -37,13 +44,3 @@ of the list you'll find a love for electronic music, 3D printing, manga, speedru
     </section>
   </article>
 </main>
-<script>
-  const nameContainer = document.getElementById('name-container')!;
-  nameContainer.addEventListener('mouseover', function () {
-    this.classList.add('swap-active');
-  });
-
-  nameContainer.addEventListener('mouseout', function () {
-    this.classList.remove('swap-active');
-  });
-</script>
