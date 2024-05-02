@@ -17,7 +17,7 @@ jobs:
     - name: Install TeXLive
       run: |
         sudo apt-get update
-        sudo apt-get install -y texlive-latex-base texlive-fonts-recommended texlive-latex-recommended texlive-latex-extra texlive-luatex
+        sudo apt-get install -y texlive-latex-base texlive-fonts-recommended texlive-latex-recommended texlive-latex-extra texlive-luatex texlive-fonts-extra
 
     - name: Compile LaTeX document
       working-directory: ./resume
