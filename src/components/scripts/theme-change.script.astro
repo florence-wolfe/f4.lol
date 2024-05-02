@@ -1,10 +1,9 @@
 <script is:inline>
-// ?? This script prevent the FART effect.
-if (localStorage.getItem('theme') === null) {
-  document.documentElement.setAttribute('data-theme', 'light');
-} else document.documentElement.setAttribute('data-theme', localStorage.getItem('theme'));
-  // "theme" LocalStorage value is set by the package to remember user preference.
-  // The value is checked and applyed before rendering anything.
+const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)')?.matches;
+const savedTheme = localStorage.getItem('theme');
+const theme = savedTheme || (userPrefersDark ? 'dark' : 'light');
+
+document.documentElement.setAttribute('data-theme', theme);
 </script>
 <script>
   import { themeChange } from 'theme-change';
