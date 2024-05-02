@@ -23,3 +23,6 @@ package-lock.json
 pnpm-lock.yaml
 
 .astro
+# Ignore all non-tex files for the Resume
+/resume/* 
+!/resume/*.tex
