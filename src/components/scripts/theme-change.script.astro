@@ -1,9 +1,9 @@
 <script is:inline>
-const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)')?.matches;
-const savedTheme = localStorage.getItem('theme');
-const theme = savedTheme || (userPrefersDark ? 'dark' : 'light');
+  const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)')?.matches;
+  const savedTheme = localStorage.getItem('theme');
+  const theme = savedTheme || (userPrefersDark ? 'dark' : 'light');
 
-document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-theme', theme);
 </script>
 <script>
   import { themeChange } from 'theme-change';

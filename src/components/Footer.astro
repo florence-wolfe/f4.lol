@@ -1,12 +1,10 @@
 ---
 import SocialIcon from './SocialIcon.astro';
-const { default: malHTML } = await import('~/assets/images/myanimelist-logo.svg?raw');
-const { default: traktHTML } = await import('~/assets/images/trakt-logo.svg?raw');
 const disclaimer =
   'Any and all opinions listed here are my own and not representative of my employers; future, past and present.';
-const repositoryLink = 'https://github.com/francis-robert/f4.lol';
+const repositoryLink = 'https://github.com/florence-robert/f4.lol';
 
-interface SocialIcon {
+interface SocialIconDefinition {
   url: string | undefined;
   platform: string;
   icon?: {
@@ -33,26 +31,26 @@ function generateMailtoLink({ email, subject, body }: MailtoParams): string {
 }
 
 const mailtoParams: MailtoParams = {
-  email: 'frank@f4.lol',
+  email: 'flo@f4.lol',
   subject: 'Hello from your website!',
   body: 'Hi there! I just wanted to say...',
 };
-const socials: SocialIcon[] = [
+const socials: SocialIconDefinition[] = [
   {
     platform: 'Twitter',
-    url: 'https://twitter.com/weakfrank_',
+    url: 'https://twitter.com/weakflo_',
   },
   {
     platform: 'Twitch',
-    url: 'https://twitch.tv/weakfrank',
+    url: 'https://twitch.tv/weakflo',
   },
   {
     platform: 'Github',
-    url: 'https://github.com/francis-robert',
+    url: 'https://github.com/florence-robert',
   },
   {
     platform: 'LinkedIn',
-    url: 'https://www.linkedin.com/in/frankjrrobert',
+    url: 'https://www.linkedin.com/in/florencejrrobert',
   },
   {
     platform: 'Discord',
@@ -67,27 +65,9 @@ const socials: SocialIcon[] = [
     url: 'https://open.spotify.com/user/12158323406',
   },
   {
-    platform: 'MyAnimeList',
-    url: 'https://myanimelist.net/profile/phrank',
-    icon: { html: malHTML },
-  },
-  {
-    platform: 'Trakt',
-    url: 'https://trakt.tv/users/frankrobert',
-    icon: { html: traktHTML },
-  },
-  {
     platform: 'Email',
     url: generateMailtoLink(mailtoParams),
     icon: { class: 'fa-solid fa-envelope' },
-  },
-  {
-    platform: 'Calendar',
-    url: undefined,
-    icon: { class: 'fa-solid fa-calendar-days' },
-    params: {
-      'data-cal-link': 'francis-robert',
-    },
   },
 ];
 ---

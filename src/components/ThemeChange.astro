@@ -1,162 +1,43 @@
 ---
-const themes = [
-  {
-    name: 'light',
-    id: 'light',
-  },
-  {
-    name: 'dark',
-    id: 'dark',
-  },
-  {
-    name: 'cupcake',
-    id: 'cupcake',
-  },
-  {
-    name: 'bumblebee',
-    id: 'bumblebee',
-  },
-  {
-    name: 'emerald',
-    id: 'emerald',
-  },
-  {
-    name: 'corporate',
-    id: 'corporate',
-  },
-  {
-    name: 'synthwave',
-    id: 'synthwave',
-  },
-  {
-    name: 'retro',
-    id: 'retro',
-  },
-  {
-    name: 'cyberpunk',
-    id: 'cyberpunk',
-  },
-  {
-    name: 'valentine',
-    id: 'valentine',
-  },
-  {
-    name: 'halloween',
-    id: 'halloween',
-  },
-  {
-    name: 'garden',
-    id: 'garden',
-  },
-  {
-    name: 'forest',
-    id: 'forest',
-  },
-  {
-    name: 'aqua',
-    id: 'aqua',
-  },
-  {
-    name: 'lofi',
-    id: 'lofi',
-  },
-  {
-    name: 'pastel',
-    id: 'pastel',
-  },
-  {
-    name: 'fantasy',
-    id: 'fantasy',
-  },
-  {
-    name: 'wireframe',
-    id: 'wireframe',
-  },
-  {
-    name: 'black',
-    id: 'black',
-  },
-  {
-    name: 'luxury',
-    id: 'luxury',
-  },
-  {
-    name: 'dracula',
-    id: 'dracula',
-  },
-  {
-    name: 'cmyk',
-    id: 'cmyk',
-  },
-  {
-    name: 'autumn',
-    id: 'autumn',
-  },
-  {
-    name: 'business',
-    id: 'business',
-  },
-  {
-    name: 'acid',
-    id: 'acid',
-  },
-  {
-    name: 'lemonade',
-    id: 'lemonade',
-  },
-  {
-    name: 'night',
-    id: 'night',
-  },
-  {
-    name: 'coffee',
-    id: 'coffee',
-  },
-  {
-    name: 'winter',
-    id: 'winter',
-  },
-];
+import allThemes from 'daisyui/src/theming/themes';
+const themes = Object.keys(allThemes);
 ---
 
 <div title="Change Theme" class="dropdown dropdown-end z-10">
-  <button aria-haspopup="true" aria-label="Themes menu button" class="btn normal-case btn-accent">
-    <i class="fa-solid fa-palette" class="w-4"></i>
+  <button aria-haspopup="true" aria-label="Themes menu button" class="btn btn-sm normal-case btn-accent">
+    <i class="fa-solid fa-palette" class="w-2"></i>
     <span class="hidden font-normal md:inline">Themes</span>
-    <i class="fa-solid fa-chevron-down w-4"></i>
+    <i class="fa-solid fa-chevron-down w-2"></i>
   </button>
 
-  <div
+  <ul
+    tabindex="0"
     role="menu"
     aria-label="Themes menu"
-    tabindex="0"
-    class="dropdown-content bg-base-200 text-base-content rounded-box top-px h-[70vh] max-h-96 w-56 overflow-y-auto shadow mt-16 p-3 [&>button:not(:last-child)]:mb-3"
+    class="dropdown-content h-[70vh] overflow-y-auto z-[1] p-2 shadow-2xl bg-base-300 rounded-box w-52 [&>li:not(:last-child)]:mb-1"
   >
     {
       themes.map((theme) => (
-        <button
-          role="menuitem"
-          aria-label={`Change theme to ${theme.name}`}
-          class="outline-base-content overflow-hidden rounded-lg text-left w-full"
-          data-set-theme={theme.id}
+        <li
           data-act-class="[&_svg]:visible"
+          class="relative overflow-hidden btn-outline hover:bg-transparent"
+          data-theme={theme}
         >
-          <div data-theme={theme.id} class="bg-base-100 text-base-content w-full cursor-pointer font-sans">
-            <div class="grid grid-cols-5 grid-rows-3">
-              <div class="col-span-5 row-span-3 row-start-1 flex items-center gap-2 px-4 py-3">
-                <i class="fa-solid fa-check invisible h-3 w-3 shrink-0" />
-                <div class="flex-grow text-sm">{theme.id}</div>
-                <div class="flex h-full flex-shrink-0 flex-wrap gap-1">
-                  <div class="bg-primary w-2 rounded" />
-                  <div class="bg-secondary w-2 rounded" />
-                  <div class="bg-accent w-2 rounded" />
-                  <div class="bg-neutral w-2 rounded" />
-                </div>
-              </div>
-            </div>
+          <input
+            type="radio"
+            name="theme-dropdown"
+            class="theme-controller btn btn-sm btn-block justify-start"
+            aria-label={theme}
+            value={theme}
+          />
+          <div class="absolute right-2 top-1/2 h-1/2 transform -translate-y-1/2 flex flex-shrink-0 flex-wrap gap-1">
+            <div class="bg-primary w-2 rounded" />
+            <div class="bg-secondary w-2 rounded" />
+            <div class="bg-accent w-2 rounded" />
+            <div class="bg-neutral w-2 rounded" />
           </div>
-        </button>
+        </li>
       ))
     }
-  </div>
+  </ul>
 </div>

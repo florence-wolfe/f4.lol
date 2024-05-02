@@ -5,9 +5,9 @@ const CONFIG = {
   basePathname: '/',
   trailingSlash: false,
 
-  title: "f4.lol - Frank's home",
+  title: "f4.lol - Flo's home",
   description:
-    'Personal website of Frank, a software engineer and a student. I write about programming, tech, and life.',
+    'Personal website for Flo, a software engineer and a student. I write about programming, tech, and life.',
 
   defaultTheme: 'system', // Values: "system" | "light" | "dark" | "light:only" | "dark:only"
 

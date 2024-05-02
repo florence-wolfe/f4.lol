@@ -2,12 +2,13 @@
 import Layout from '~/layouts/BaseLayout.astro';
 
 const meta = {
-  title: "Frank's resume",
-  description: "Frank's resume",
+  title: "Flo's resume",
+  description: "Flo's resume",
   dontUseTitleTemplate: true,
 };
 const year = new Date().getFullYear();
-const resume = `https://raw.githubusercontent.com/francis-robert/f4.lol/main/resume/frank_robert_resume_${year}.pdf`;
+// TODO: Re-setup the resume
+const resume = '';
 const iframeSrc = `https://mozilla.github.io/pdf.js/web/viewer.html?file=${resume}&zoom=page-width`;
 ---
 
