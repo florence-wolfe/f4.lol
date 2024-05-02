@@ -1,11 +1,18 @@
 ---
 import SocialIcon from './SocialIcon.astro';
-import CalButton from './CalButton.astro';
+const { default: malHTML } = await import('~/assets/images/myanimelist-logo.svg?raw');
+const { default: traktHTML } = await import('~/assets/images/trakt-logo.svg?raw');
 
 interface SocialIcon {
-  url: string;
-  icon?: string;
+  url: string | undefined;
   platform: string;
+  icon?: {
+    class?: string;
+    html?: string;
+  };
+  params?: {
+    [key: string]: string;
+  };
 }
 
 interface MailtoParams {
@@ -45,31 +52,56 @@ const socials: SocialIcon[] = [
     url: 'https://www.linkedin.com/in/frankjrrobert',
   },
   {
-    platform: 'Email',
-    url: generateMailtoLink(mailtoParams),
-    icon: 'fa-solid fa-envelope',
-  },
-  {
     platform: 'Discord',
     url: 'https://discord.com/users/261622219745132545',
+  },
+  {
+    platform: 'Xbox',
+    url: 'http://live.xbox.com/Profile?Gamertag=scumblo',
+  },
+  {
+    platform: 'Spotify',
+    url: 'https://open.spotify.com/user/12158323406',
+  },
+  {
+    platform: 'MyAnimeList',
+    url: 'https://myanimelist.net/profile/phrank',
+    icon: { html: malHTML },
+  },
+  {
+    platform: 'Trakt',
+    url: 'https://trakt.tv/users/frankrobert',
+    icon: { html: traktHTML },
+  },
+  {
+    platform: 'Email',
+    url: generateMailtoLink(mailtoParams),
+    icon: { class: 'fa-solid fa-envelope' },
+  },
+  {
+    platform: 'Calendar',
+    url: undefined,
+    icon: { class: 'fa-solid fa-calendar-days' },
+    params: {
+      'data-cal-link': 'francis-robert',
+    },
   },
 ];
 ---
 
-<footer class="navbar bg-base-200">
-  <div class="flex-1">
+<footer class="footer gap-0 [&>*]:gap-0 p-2 bg-base-200">
+  <li class="w-full">
     <span class="menu-title">Socials</span>
-    <ul class="menu menu-horizontal py-0">
-      {
-        socials.map((social) => (
-          <li>
-            <SocialIcon {...social} />
-          </li>
-        ))
-      }
-    </ul>
-  </div>
-  <div class="flex-none">
-    <CalButton />
-  </div>
+    <div class="flex">
+      <ul class="menu menu-horizontal py-0">
+        {
+          socials.map((social) => (
+            <li>
+              <SocialIcon {...social} />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </li>
 </footer>

@@ -1,5 +1,5 @@
 ---
-import '~/assets/styles/base.css';
+import '~/base.css';
 import ThemeChangeScript from '~/components/scripts/theme-change.script.astro';
 import CalScript from '~/components/scripts/cal.script.astro';
 import Header from '~/components/Header.astro';
@@ -11,8 +11,14 @@ const { language = 'en', textDirection = 'ltr' } = SITE;
 ---
 
 <!DOCTYPE html>
-<html lang={language} dir={textDirection} class="h-full 2xl:text-[20px]" dir={textDirection}>
+<html lang={language} dir={textDirection} class="h-full" dir={textDirection}>
   <head>
+    <style>
+      html {
+        font-size: 1rem;
+        font-size: clamp(1.5rem, -4vw + 1rem, 4rem);
+      }
+    </style>
     <ThemeChangeScript />
     <CalScript />
     <script src="https://kit.fontawesome.com/593a0def8f.js" crossorigin="anonymous"></script>

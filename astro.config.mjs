@@ -23,7 +23,9 @@ export default defineConfig({
   trailingSlash: SITE.trailingSlash ? 'always' : 'never',
 
   output: 'static',
-
+  experimental: {
+    assets: true,
+  },
   integrations: [
     tailwind({
       config: {

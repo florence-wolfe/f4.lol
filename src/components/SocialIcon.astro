@@ -1,9 +1,14 @@
 ---
-const { url, platform, icon } = Astro.props;
-const iconClass = icon || `fa-brands fa-${platform.toLowerCase()}`;
+import { addAttributes } from '~/utils/add-attributes-to-html';
+const { url, platform, icon = {}, params } = Astro.props;
+const iconClass = icon.class || `fa-brands fa-${platform.toLowerCase()}`;
+const iconHTML = icon.html ? addAttributes(icon.html, { class: 'svg-inline--fa' }) : '';
 ---
 
-<a href={url} target="_blank">
-  <i class={iconClass}></i>
-  <span class="pl-1">{platform}</span>
+<style></style>
+<a href={url} target="_blank" {...params}>
+  <div class="pointer-events-none [&>svg]:fill-current">
+    {iconHTML ? <Fragment set:html={iconHTML} /> : <i class={iconClass} />}
+    <span class="pl-1">{platform}</span>
+  </div>
 </a>
