@@ -26,4 +26,4 @@ pnpm-lock.yaml
 # Ignore all non-tex/non-pdf files for the Resume
 /resume/* 
 !/resume/*.tex
-!/resume/*.pdf
+!/resume/frank_robert_*.pdf
