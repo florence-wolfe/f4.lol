@@ -3,9 +3,9 @@ import me from '~/assets/images/anime-self.png';
 ---
 
 <style>
-  #name {
-    -webkit-text-stroke: 2px hsl(var(--p));
-    text-shadow: -0.09em 0 0 hsl(var(--a)), 0.09em 0 0 hsl(var(--s));
+  .text-3d {
+    text-shadow: -2px -2px 0 hsl(var(--p)), 2px -2px 0 hsl(var(--p)), -2px 2px 0 hsl(var(--p)), 2px 2px 0 hsl(var(--p)),
+      -0.09em 0 0 hsl(var(--a)), 0.09em 0 0 hsl(var(--s));
   }
 </style>
 <main class="grow hero bg-base-300 -z-10">
@@ -13,7 +13,7 @@ import me from '~/assets/images/anime-self.png';
     <div class="max-w-md">
       <div class="flex">
         <h1 class="text-5xl font-bold">
-          Hey there! I'm <strong id="name" class="italic text-primary-content">Frank Robert</strong>
+          Hey there! I'm <strong class="italic text-primary-content text-3d">Frank Robert</strong>
         </h1>
 
         <div class="avatar">
