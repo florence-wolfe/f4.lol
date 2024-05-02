@@ -25,10 +25,11 @@ const themes = Object.keys(allThemes);
         >
           <input
             type="radio"
-            name="theme-dropdown"
-            class="theme-controller btn btn-sm btn-block justify-start"
+            name="theme-radios"
+            class="radio theme-controller btn btn-sm btn-block justify-start"
             aria-label={theme}
             value={theme}
+            onchange={`updateTheme('${theme}');`}
           />
           <div class="absolute right-2 top-1/2 h-1/2 transform -translate-y-1/2 flex flex-shrink-0 flex-wrap gap-1">
             <div class="bg-primary w-2 rounded" />
@@ -41,3 +42,10 @@ const themes = Object.keys(allThemes);
     }
   </ul>
 </div>
+
+<script is:inline>
+function updateTheme(theme) {
+  localStorage.setItem('theme', theme);
+  document.documentElement.setAttribute('data-theme', theme);
+}
+</script>
