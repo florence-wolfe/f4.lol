@@ -4,12 +4,17 @@ import FunnyButton from './FunnyButton.astro';
 
 <div class="flex-none mr-2">
   <div class="dropdown dropdown-end z-10">
-    <div role="button" tabindex="0" class="btn normal-case btn-primary">
+    <div role="button" aria-label="Buttons Menu button" tabindex="0" class="btn normal-case btn-primary">
       <i class="fa-solid fa-circle-dot w-4"></i>
       <span class="hidden font-normal md:inline">buttons</span>
     </div>
-    <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-      <li>
+    <ul
+      role="menu"
+      aria-label="Button menu"
+      tabindex="0"
+      class="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+    >
+      <li role="menuitem">
         <FunnyButton />
       </li>
     </ul>
