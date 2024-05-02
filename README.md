@@ -10,4 +10,4 @@ Astro web application with some Alpine and HTMX to explore the technologies.
 
 ### Resume (LaTeX)
 
-My resume is crafted in LaTeX for precise formatting. Find the source files in the `resume` directory. The compiled resume can be viewed [here](resume/). It gets compiled automatically by a GHA when any of the tex files are modified.
+My resume is crafted in LaTeX for precise formatting. Find the source files in the `resume` directory. The compiled resume can be viewed [here](resume/florence_wolfe_2024.pdf). It gets compiled automatically by a GHA when any of the tex files are modified.
