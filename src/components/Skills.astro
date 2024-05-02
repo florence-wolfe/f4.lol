@@ -30,10 +30,10 @@ const skills: { title: string; items: string[] }[] = [
 ---
 
 <article class="prose m-4 max-w-none">
-    <section tabindex="0" class="collapse collapse-plus border">
-        <input type="checkbox" />
-        <h2 class="collapse-title my-2">Skills</h2>
-        <div class="collapse-content grid grid-cols-1 md:grid-cols-2 gap-4">
+    <section tabindex="0" id="skills-container" class="collapse collapse-plus border">
+        <input type="checkbox" id="skills-checkbox" aria-expanded="false" />
+        <label class="collapse-title my-2" for="skills-checkbox">Skills</label>
+        <div class="collapse-content grid grid-cols-1 md:grid-cols-2 gap-4" aria-hidden="true">
             {
                 skills.map((skill) => (
                     <div>
@@ -51,3 +51,27 @@ const skills: { title: string; items: string[] }[] = [
         </div>
     </section>
 </article>
+
+<script>
+    const checkbox = document.getElementById('skills-checkbox') as HTMLInputElement;
+    const content = document.querySelector('.collapse-content');
+    const skillsContainer = document.getElementById('skills-container');
+
+    checkbox?.addEventListener('change', function () {
+        const isExpanded = this.checked;
+        this.setAttribute('aria-expanded', String(isExpanded));
+        content?.setAttribute('aria-hidden', String(!isExpanded));
+    });
+    skillsContainer?.addEventListener('focus', function () {
+        const isExpanded = content?.attributes['aria-hidden'].value === 'true';
+        content?.setAttribute('aria-hidden', String(!isExpanded));
+        checkbox?.setAttribute('aria-expanded', String(isExpanded));
+        checkbox.checked = true;
+    });
+    skillsContainer?.addEventListener('blur', function () {
+        const isExpanded = content?.attributes['aria-hidden'].value === 'true';
+        content?.setAttribute('aria-hidden', String(!isExpanded));
+        checkbox?.setAttribute('aria-expanded', String(isExpanded));
+        checkbox.checked = false;
+    });
+</script>
