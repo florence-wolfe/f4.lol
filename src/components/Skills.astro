@@ -30,17 +30,18 @@ const skills: { title: string; items: string[] }[] = [
 ---
 
 <article class="prose m-4 max-w-none">
-    <section class="skills">
-        <h2 class="my-2">Skills</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <section tabindex="0" class="collapse collapse-plus">
+        <input type="checkbox" />
+        <h2 class="collapse-title mt-2">Skills</h2>
+        <div class="collapse-content grid grid-cols-1 md:grid-cols-2 gap-4">
             {
                 skills.map((skill) => (
-                    <div class="skill">
+                    <div>
                         <h3 class="mt-2">{skill.title}</h3>
                         <ul>
                             {skill.items.map((item) => (
                                 <li class="list-disc">
-                                    <p class="">{item}</p>
+                                    <p>{item}</p>
                                 </li>
                             ))}
                         </ul>
