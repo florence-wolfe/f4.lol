@@ -9,33 +9,33 @@ const phonetic = `/ˈfɹæŋk ˈɹɑbɚt/`;
       -0.09em 0 0 hsl(var(--a)), 0.09em 0 0 hsl(var(--s));
   }
 </style>
-<main class="grow hero bg-base-300">
-  <div class="hero-content text-left">
-    <div class="max-w-md">
-      <div class="flex">
+<main id="main" class="grow hero bg-base-300">
+  <article class="hero-content text-left">
+    <section class="max-w-md">
+      <header class="flex">
         <h1 class="text-5xl font-bold">
           Hey there! I'm
 
-          <span tabindex="0" id="name-container" class="swap swap-flip">
+          <span tabindex="0" id="name-container" class="swap swap-flip" aria-pressed="false">
             <strong class="italic text-primary-content text-3d swap-off">Frank Robert</strong>
-            <strong class="text-primary-content text-3d swap-on">{phonetic}</strong>
+            <strong class="text-primary-content text-3d swap-on" aria-hidden="true">{phonetic}</strong>
           </span>
         </h1>
 
-        <div class="avatar w-20 h-20">
+        <figure class="avatar w-20 h-20">
           <div class="rounded-full ring ring-secondary ring-offset-base-100 ring-offset-2">
-            <img src={me.src} alt="This is what I look like as an anime character" />
+            <img src={me.src} alt="Anime portrait of Frank Robert" />
           </div>
-        </div>
-      </div>
+        </figure>
+      </header>
       <p class="py-6">
         I'm a seasoned software engineer with a passion for all things tech. I have a loads of interests but at the top
         of the list you'll find a love for electronic music, 3D printing, manga, speedrunning, and gaming. This website
         is a digital canvas of my life, skills, and passions. Take a look around, and if something sparks your interest,
         don't hesitate to reach out on my socials. It's always a joy to connect and create with like-minded individuals.
       </p>
-    </div>
-  </div>
+    </section>
+  </article>
 </main>
 <script>
   const nameContainer = document.getElementById('name-container')!;

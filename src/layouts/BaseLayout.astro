@@ -25,6 +25,21 @@ const { language = 'en', textDirection = 'ltr' } = SITE;
           font-size: 200%;
         }
       }
+
+      .skip-link {
+        position: absolute;
+        top: -100px;
+        left: 0;
+        background: #000;
+        color: white;
+        padding: 10px;
+        z-index: 100;
+        transition: top 0.3s ease;
+      }
+
+      .skip-link:focus {
+        top: 0;
+      }
     </style>
     <ThemeChangeScript />
     <CalScript />
@@ -36,6 +51,7 @@ const { language = 'en', textDirection = 'ltr' } = SITE;
   </head>
 
   <body class="h-full flex flex-col antialiased tracking-tight">
+    <a href="#main" class="skip-link">Skip to main content</a>
     <Header />
     <slot />
     <Footer />
