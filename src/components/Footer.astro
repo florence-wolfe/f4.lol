@@ -2,6 +2,8 @@
 import SocialIcon from './SocialIcon.astro';
 const { default: malHTML } = await import('~/assets/images/myanimelist-logo.svg?raw');
 const { default: traktHTML } = await import('~/assets/images/trakt-logo.svg?raw');
+const disclaimer =
+  'Any and all opinions listed here are my own and not representative of my employers; future, past and present.';
 
 interface SocialIcon {
   url: string | undefined;
@@ -89,7 +91,7 @@ const socials: SocialIcon[] = [
 ];
 ---
 
-<footer class="footer gap-0 [&>*]:gap-0 p-2 bg-base-200">
+<footer class="footer gap-0 [&>*]:gap-0 flex flex-col p-2 bg-base-200">
   <div class="w-full">
     <h2 class="menu-title">Socials</h2>
     <nav class="flex">
@@ -103,5 +105,11 @@ const socials: SocialIcon[] = [
         }
       </ul>
     </nav>
+  </div>
+  <div class="flex divider"></div>
+  <div class="w-full">
+    <p class="p-4 pt-0">
+      {disclaimer}
+    </p>
   </div>
 </footer>

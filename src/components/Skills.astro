@@ -1,0 +1,52 @@
+---
+const skills: { title: string; items: string[] }[] = [
+    {
+        title: 'Programming Languages and Frameworks',
+        items: [
+            'Proficiency in a variety of languages, including JavaScript, TypeScript, C++, and PHP.',
+            'In-depth knowledge of numerous web frameworks, such as React w/ Redux, NextJS, and Laravel.',
+        ],
+    },
+    {
+        title: 'Database Management',
+        items: [
+            'Experience with MongoDB, PostgreSQL, and MySQL, demonstrating a broad understanding of both SQL and NoSQL databases.',
+        ],
+    },
+    {
+        title: 'DevOps and Cloud Technologies',
+        items: [
+            'Proficiency with AWS, Terraform, Docker, GitHub Actions, and CircleCI, demonstrating strong skills in CI/CD, containerization, and cloud services.',
+        ],
+    },
+    {
+        title: 'Web and Application Development',
+        items: [
+            'Expertise in Electron for desktop applications, and WebRTC and WebSockets for real-time web applications.',
+            'Experience with front-end development tools such as Babel and Webpack on various platforms such as Xbox, PlayStation, Chromecast and Smart TVs',
+        ],
+    },
+];
+---
+
+<article class="prose m-4 max-w-none">
+    <section class="skills">
+        <h2 class="my-2">Skills</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {
+                skills.map((skill) => (
+                    <div class="skill">
+                        <h3 class="mt-2">{skill.title}</h3>
+                        <ul>
+                            {skill.items.map((item) => (
+                                <li class="list-disc">
+                                    <p class="">{item}</p>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                ))
+            }
+        </div>
+    </section>
+</article>
