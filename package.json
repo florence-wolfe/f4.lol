@@ -13,8 +13,8 @@
     "lint:eslint": "eslint . --ext .js,.ts,.astro"
   },
   "devDependencies": {
-    "@astrojs/mdx": "^2.1.1",
-    "@astrojs/sitemap": "^3.1.1",
+    "@astrojs/mdx": "^2.2.2",
+    "@astrojs/sitemap": "^3.1.2",
     "@astrojs/tailwind": "^5.1.0",
     "@astrolib/seo": "^1.0.0-beta.5",
     "@fontsource/inter": "^5.0.16",
@@ -25,7 +25,7 @@
     "@tailwindcss/typography": "^0.5.10",
     "@typescript-eslint/eslint-plugin": "^7.0.2",
     "@typescript-eslint/parser": "^7.0.2",
-    "astro": "^4.4.4",
+    "astro": "^4.5.12",
     "astro-compress": "^2.2.10",
     "astro-icon": "^1.1.0",
     "daisyui": "^4.7.2",
@@ -39,13 +39,11 @@
     "reading-time": "^1.5.0",
     "svgo": "3.2.0",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5.3.3"
-  },
-  "engines": {
-    "node": ">=16.12.0"
+    "typescript": "^5.4.3"
   },
   "dependencies": {
     "@astrojs/alpinejs": "^0.4.0",
+    "@astrojs/check": "^0.5.10",
     "@types/alpinejs": "^3.13.6",
     "alpinejs": "^3.13.5",
     "chroma-js": "^2.4.2",
