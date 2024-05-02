@@ -1,0 +1,33 @@
+name: Build and Commit PDF Resume
+
+on:
+  push:
+    paths:
+    - '**.tex'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install TeXLive
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y texlive-xetex texlive-fonts-recommended texlive-generic-recommended texlive-latex-extra
+
+    - name: Compile LaTeX document
+      run: |
+        pdflatex main.tex
+        mv main.pdf resume/frank_robert_resume_$(date +'%Y').pdf
+
+    - name: Commit and push PDF to repository
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add -A
+        git commit -m "Add updated resume PDF" || echo "No changes to commit"
+        git push
+
