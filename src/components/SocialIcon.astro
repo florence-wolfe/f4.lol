@@ -2,11 +2,16 @@
 import { addAttributes } from '~/utils/add-attributes-to-html';
 const { url, platform, icon = {}, params } = Astro.props;
 const iconClass = icon.class || `fa-brands fa-${platform.toLowerCase()}`;
-const iconHTML = icon.html ? addAttributes(icon.html, { class: 'svg-inline--fa' }) : '';
+const iconHTML = icon.html ? addAttributes(icon.html, { class: 'svg-inline--fa', role: 'presentation' }) : '';
 ---
 
-<style></style>
-<a href={url} target="_blank" {...params}>
+<a
+  href={url}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label={`Open link to ${platform} in a new tab`}
+  {...params}
+>
   <div class="pointer-events-none [&>svg]:fill-current">
     {iconHTML ? <Fragment set:html={iconHTML} /> : <i class={iconClass} />}
     <span class="pl-1">{platform}</span>
