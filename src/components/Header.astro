@@ -1,12 +1,15 @@
 ---
-import Actions from './Actions.astro';
 import ThemeChange from './ThemeChange.astro';
 ---
 
 <header class="navbar bg-base-100">
-  <nav class="flex-1">
-    <a aria-label="Home" class="btn btn-ghost normal-case text-xl">f4.lol</a>
+  <nav class="navbar-start">
+    <a href="/" aria-label="Home" class="btn btn-ghost normal-case text-xl">f4.lol</a>
   </nav>
-  <Actions />
-  <ThemeChange />
+  <div class="navbar-end">
+    <ul class="menu menu-horizontal px-1">
+      <li><a href="/resume">Resume</a></li>
+    </ul>
+    <ThemeChange />
+  </div>
 </header>

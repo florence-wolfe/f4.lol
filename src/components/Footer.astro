@@ -4,6 +4,7 @@ const { default: malHTML } = await import('~/assets/images/myanimelist-logo.svg?
 const { default: traktHTML } = await import('~/assets/images/trakt-logo.svg?raw');
 const disclaimer =
   'Any and all opinions listed here are my own and not representative of my employers; future, past and present.';
+const repositoryLink = 'https://github.com/francis-robert/f4.lol';
 
 interface SocialIcon {
   url: string | undefined;
@@ -92,6 +93,7 @@ const socials: SocialIcon[] = [
 ---
 
 <footer class="footer gap-0 [&>*]:gap-0 flex flex-col p-2 bg-base-200">
+  <div class="flex divider mb-0"></div>
   <div class="w-full">
     <h2 class="menu-title">Socials</h2>
     <nav class="flex">
@@ -106,10 +108,12 @@ const socials: SocialIcon[] = [
       </ul>
     </nav>
   </div>
-  <div class="flex divider"></div>
   <div class="w-full">
-    <p class="p-4 pt-0">
+    <p class="px-4 pt-0">
       {disclaimer}
+    </p>
+    <p class="px-4 pt-2">
+      Built with Astro. See <a class="link link-secondary" href={repositoryLink} target="_blank">source code here</a>.
     </p>
   </div>
 </footer>
