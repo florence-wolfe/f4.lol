@@ -6,21 +6,39 @@ modal.showModal()
 ">funny button</button>
 
 <dialog id="modal" class="modal">
-  <form method="dialog" class="modal-box">
+  <form method="dialog" class="modal-box w-auto">
     <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">X</button>
-    <img id="funny-button-image" class="mask mask-squircle" src="https://cataas.com/cat/gif" />
+    <img id="funny-button-image" class="mask mask-squircle hidden" />
+
+    <span id="funny-button-loader" class="loading loading-infinity loading-lg hidden"></span>
   </form>
   <form method="dialog" class="modal-backdrop w-screen h-screen">
     <button>close</button>
   </form>
 </dialog>
 <script>
+  const api = 'https://api.giphy.com/v1/gifs/random';
+  const params = new URLSearchParams({
+    api_key: 'DsvIKKjpKtISHJuCoJQ6TteXDunt0yzT',
+    tag: 'cat',
+  });
+  const url = `${api}?${params.toString()}`;
+
   const button = document.getElementById('funny-button')!;
-  button?.addEventListener('click', () => {
-    const modal = document.getElementById('modal')!;
+  button?.addEventListener('click', async () => {
+    const response = await fetch(url);
+    const result = await response.json();
     const image = document.getElementById('funny-button-image') as HTMLImageElement;
-    image.src = 'https://cataas.com/cat/gif?nocache=' + Math.random();
-    // @ts-ignore
-    modal.showModal();
+    const spinner = document.getElementById('funny-button-loader')!;
+    // Show spinner
+    spinner.style.display = 'block';
+    image.style.display = 'none';
+    image.src = result.data.images.fixed_height.url;
+    // Event listener for load event
+    image.addEventListener('load', () => {
+      // Hide spinner
+      spinner.style.display = 'none';
+      image.style.display = 'block';
+    });
   });
 </script>

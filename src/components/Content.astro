@@ -1,5 +1,6 @@
 ---
 import me from '~/assets/images/anime-self.png';
+const phonetic = `[ˈfɹæŋk ˈɹɑbɚt]`;
 ---
 
 <style>
@@ -8,16 +9,21 @@ import me from '~/assets/images/anime-self.png';
       -0.09em 0 0 hsl(var(--a)), 0.09em 0 0 hsl(var(--s));
   }
 </style>
-<main class="grow hero bg-base-300 -z-10">
+<main class="grow hero bg-base-300">
   <div class="hero-content text-left">
     <div class="max-w-md">
       <div class="flex">
         <h1 class="text-5xl font-bold">
-          Hey there! I'm <strong class="italic text-primary-content text-3d">Frank Robert</strong>
+          Hey there! I'm
+
+          <span id="name-container" class="swap swap-flip">
+            <strong class="italic text-primary-content text-3d swap-off">Frank Robert</strong>
+            <strong class="text-primary-content text-3d swap-on">{phonetic}</strong>
+          </span>
         </h1>
 
-        <div class="avatar">
-          <div class="w-24 rounded-full ring ring-secondary ring-offset-base-100 ring-offset-2">
+        <div class="avatar w-20 h-20">
+          <div class="rounded-full ring ring-secondary ring-offset-base-100 ring-offset-2">
             <img src={me.src} alt="This is what I look like as an anime character" />
           </div>
         </div>
@@ -31,3 +37,14 @@ import me from '~/assets/images/anime-self.png';
     </div>
   </div>
 </main>
+<script>
+  const nameContainer = document.getElementById('name-container');
+  console.log({ nameContainer });
+  nameContainer.addEventListener('mouseover', function () {
+    this.classList.add('swap-active');
+  });
+
+  nameContainer.addEventListener('mouseout', function () {
+    this.classList.remove('swap-active');
+  });
+</script>
