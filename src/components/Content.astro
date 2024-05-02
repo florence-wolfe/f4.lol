@@ -31,7 +31,7 @@ of the list you'll find a love for electronic music, 3D printing, manga, speedru
             aria-pressed="false"
             class="swap swap-flip"
           >
-            <strong class="italic text-primary-content text-3d swap-off">Flo Robert</strong>
+            <strong class="italic text-primary-content text-3d swap-off">Flo Wolfe</strong>
             <strong class="text-primary-content text-3d swap-on" aria-hidden="true">{phonetic}</strong>
           </span>
         </h1>
@@ -39,7 +39,7 @@ of the list you'll find a love for electronic music, 3D printing, manga, speedru
         <div class="flex flex-col">
           <figure class="avatar w-20 h-20">
             <div class="rounded-full ring ring-secondary ring-offset-base-100 ring-offset-2">
-              <img src={me.src} alt="Anime portrait of Flo Robert" />
+              <img src={me.src} alt="Anime portrait of Flo Wolfe" />
             </div>
           </figure>
           <img class="mt-2" id="pronouns-badge" alt="Pronouns Shields Badge" />
@@ -53,8 +53,10 @@ of the list you'll find a love for electronic music, 3D printing, manga, speedru
 
   <script>
     import chroma from 'chroma-js';
+    const rootElement = document.documentElement;
+
     function getCssVariableValue(varName: string) {
-      return getComputedStyle(document.documentElement).getPropertyValue(varName).trim().split(' ').map(Number);
+      return getComputedStyle(rootElement).getPropertyValue(varName).trim().split(' ').map(Number);
     }
 
     function updateBadgeUrl() {
@@ -65,6 +67,7 @@ of the list you'll find a love for electronic music, 3D printing, manga, speedru
       const labelColorEncoded = encodeURIComponent(labelColor);
       const badgeColorEncoded = encodeURIComponent(badgeColor);
 
+      console.log({ labelColor, badgeColor, labelColorEncoded, badgeColorEncoded });
       const badgeUrl = `https://img.shields.io/endpoint?url=https%3A%2F%2Fpronoundb.org%2Fshields%2F65db97a4cf2d0494c7de8e98.json&style=flat&labelColor=${labelColorEncoded}&color=${badgeColorEncoded}`;
       const badge = document.getElementById('pronouns-badge') as HTMLImageElement;
       badge.src = badgeUrl;
@@ -72,12 +75,14 @@ of the list you'll find a love for electronic music, 3D printing, manga, speedru
 
     const observer = new MutationObserver((mutationsList) => {
       for (const mutation of mutationsList) {
+        console.log(mutation.type, mutation.attributeName);
+        // Once the root HTML node has `data-theme` it means we can actually pull the correct theme and colors for the badge
         if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
           updateBadgeUrl();
         }
       }
     });
-
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    console.log({ observer });
+    observer.observe(rootElement, { attributes: true, attributeFilter: ['data-theme'] });
   </script>
 </main>
