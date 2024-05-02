@@ -1,0 +1,56 @@
+---
+import SocialIcon from './SocialIcon.astro';
+import CalButton from './CalButton.astro';
+
+interface SocialIcon {
+  url: string;
+  icon?: string;
+  platform: string;
+}
+
+const socials: SocialIcon[] = [
+  {
+    platform: 'Twitter',
+    url: 'https://twitter.com/weakfrank_',
+  },
+  {
+    platform: 'Twitch',
+    url: 'https://twitch.tv/weakfrank',
+  },
+  {
+    platform: 'Github',
+    url: 'https://github.com/francis-robert',
+  },
+  {
+    platform: 'LinkedIn',
+    url: 'https://www.linkedin.com/in/frankjrrobert',
+  },
+  {
+    platform: 'Email',
+    url: 'mailto:',
+    icon: 'fa-solid fa-envelope',
+  },
+  {
+    platform: 'Discord',
+    url: 'https://discord.com/users/261622219745132545',
+  },
+];
+---
+
+<footer class="navbar bg-base-200">
+  <div class="flex-1">
+    <span class="menu-title">Socials</span>
+    <ul class="menu menu-horizontal py-0">
+      {
+        socials.map((social) => (
+          <li>
+            <SocialIcon {...social} />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+  <div class="flex-none">
+    <CalButton />
+  </div>
+</footer>

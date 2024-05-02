@@ -1,0 +1,26 @@
+---
+---
+
+<button id="funny-button" onclick="
+modal.showModal()
+">funny button</button>
+
+<dialog id="modal" class="modal">
+  <form method="dialog" class="modal-box">
+    <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">X</button>
+    <img id="funny-button-image" class="mask mask-squircle" src="https://cataas.com/cat/gif" />
+  </form>
+  <form method="dialog" class="modal-backdrop w-screen h-screen">
+    <button>close</button>
+  </form>
+</dialog>
+<script>
+  const button = document.getElementById('funny-button')!;
+  button?.addEventListener('click', () => {
+    const modal = document.getElementById('modal')!;
+    const image = document.getElementById('funny-button-image') as HTMLImageElement;
+    image.src = 'https://cataas.com/cat/gif?nocache=' + Math.random();
+    // @ts-ignore
+    modal.showModal();
+  });
+</script>

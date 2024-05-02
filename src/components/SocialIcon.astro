@@ -1,0 +1,9 @@
+---
+const { url, platform, icon } = Astro.props;
+const iconClass = icon || `fa-brands fa-${platform.toLowerCase()}`;
+---
+
+<a href={url} target="_blank">
+  <i class={iconClass}></i>
+  <span class="pl-1">{platform}</span>
+</a>

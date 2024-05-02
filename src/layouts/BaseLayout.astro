@@ -1,33 +1,26 @@
 ---
 import '~/assets/styles/base.css';
+import ThemeChangeScript from '~/components/scripts/theme-change.script.astro';
+import CalScript from '~/components/scripts/cal.script.astro';
+import Header from '~/components/Header.astro';
+import Footer from '~/components/Footer.astro';
 
-import MetaTags from '~/components/common/MetaTags.astro';
-import BasicScripts from '~/components/common/BasicScripts.astro';
-
-import { MetaSEO } from '~/types';
 import { SITE } from '~/config.mjs';
 
-export interface Props {
-  meta?: MetaSEO;
-}
-
-const { meta = {} } = Astro.props;
 const { language = 'en', textDirection = 'ltr' } = SITE;
 ---
 
 <!DOCTYPE html>
-<html lang={language} dir={textDirection} class="2xl:text-[20px]">
+<html lang={language} dir={textDirection} class="h-full 2xl:text-[20px]" dir={textDirection}>
   <head>
-    <MetaTags {...meta} />
+    <ThemeChangeScript />
+    <CalScript />
+    <script src="https://kit.fontawesome.com/593a0def8f.js" crossorigin="anonymous"></script>
   </head>
 
-  <body class="antialiased text-page bg-light dark:text-slate-300 tracking-tight dark:bg-dark">
+  <body class="h-full flex flex-col antialiased tracking-tight">
+    <Header />
     <slot />
-    <BasicScripts />
-    <style is:global>
-      img {
-        content-visibility: auto;
-      }
-    </style>
+    <Footer />
   </body>
 </html>
