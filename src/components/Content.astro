@@ -56,25 +56,25 @@ of the list you'll find a love for electronic music, 3D printing, manga, speedru
     const rootElement = document.documentElement;
 
     function getCssVariableValue(varName: string) {
-      return getComputedStyle(rootElement).getPropertyValue(varName).trim().split(' ').map(parseFloat);
+      return getComputedStyle(rootElement)
+        .getPropertyValue(varName)
+        .trim()
+        .split(' ')
+        .map((value) => {
+          return value.includes('%') ? parseFloat(value) / 100 : parseFloat(value);
+        });
     }
 
     function updateBadgeUrl() {
-      try {
-        const labelOklch = getCssVariableValue('--p');
-        const badgeOklch = getCssVariableValue('--s');
-        const labelColor = chroma.oklch(...labelOklch).hex();
-        const badgeColor = chroma.oklch(...badgeOklch).hex();
-        const labelColorEncoded = encodeURIComponent(labelColor);
-        const badgeColorEncoded = encodeURIComponent(badgeColor);
-        console.log({ chroma });
-        console.log({ labelOklch, badgeOklch, labelColor, badgeColor, labelColorEncoded, badgeColorEncoded });
-        const badgeUrl = `https://img.shields.io/endpoint?url=https%3A%2F%2Fpronoundb.org%2Fshields%2F65db97a4cf2d0494c7de8e98.json&style=flat&labelColor=${labelColorEncoded}&color=${badgeColorEncoded}`;
-        const badge = document.getElementById('pronouns-badge') as HTMLImageElement;
-        badge.src = badgeUrl;
-      } catch (err) {
-        console.error('something failed?', err);
-      }
+      const labelOklch = getCssVariableValue('--p');
+      const badgeOklch = getCssVariableValue('--s');
+      const labelColor = chroma.oklch(...labelOklch).hex();
+      const badgeColor = chroma.oklch(...badgeOklch).hex();
+      const labelColorEncoded = encodeURIComponent(labelColor);
+      const badgeColorEncoded = encodeURIComponent(badgeColor);
+      const badgeUrl = `https://img.shields.io/endpoint?url=https%3A%2F%2Fpronoundb.org%2Fshields%2F65db97a4cf2d0494c7de8e98.json&style=flat&labelColor=${labelColorEncoded}&color=${badgeColorEncoded}`;
+      const badge = document.getElementById('pronouns-badge') as HTMLImageElement;
+      badge.src = badgeUrl;
     }
 
     const observer = new MutationObserver((mutationsList) => {
