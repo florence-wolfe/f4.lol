@@ -2,6 +2,7 @@
 import '~/base.css';
 import ThemeChangeScript from '~/components/scripts/theme-change.script.astro';
 import CalScript from '~/components/scripts/cal.script.astro';
+import FontAwesomeScript from '~/components/scripts/font-awesome.script.astro';
 import Header from '~/components/Header.astro';
 import Footer from '~/components/Footer.astro';
 
@@ -27,8 +28,7 @@ const { language = 'en', textDirection = 'ltr' } = SITE;
     </style>
     <ThemeChangeScript />
     <CalScript />
-
-    <script defer src="https://kit.fontawesome.com/593a0def8f.js" crossorigin="anonymous"></script>
+    <FontAwesomeScript />
     <title>f4.lol — Frank's home</title>
     <meta name="description" content="A place to learn about Frank Robert, their achievements, and interests." />
     <meta charset="UTF-8" />

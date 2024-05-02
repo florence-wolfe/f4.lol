@@ -38,8 +38,7 @@ const phonetic = `/ˈfɹæŋk ˈɹɑbɚt/`;
   </div>
 </main>
 <script>
-  const nameContainer = document.getElementById('name-container');
-  console.log({ nameContainer });
+  const nameContainer = document.getElementById('name-container')!;
   nameContainer.addEventListener('mouseover', function () {
     this.classList.add('swap-active');
   });
