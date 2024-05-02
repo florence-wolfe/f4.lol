@@ -56,7 +56,7 @@ of the list you'll find a love for electronic music, 3D printing, manga, speedru
     const rootElement = document.documentElement;
 
     function getCssVariableValue(varName: string) {
-      return getComputedStyle(rootElement).getPropertyValue(varName).trim().split(' ').map(Number);
+      return getComputedStyle(rootElement).getPropertyValue(varName).trim().split(' ').map(parseFloat);
     }
 
     function updateBadgeUrl() {
