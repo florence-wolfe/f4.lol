@@ -15,6 +15,7 @@ const themes = Object.keys(allThemes);
     role="menu"
     aria-label="Themes menu"
     class="dropdown-content h-[70vh] overflow-y-auto z-[1] p-2 shadow-2xl bg-base-300 rounded-box w-52 [&>li:not(:last-child)]:mb-1"
+    id="themes-menu"
   >
     {
       themes.map((theme) => (
@@ -24,6 +25,7 @@ const themes = Object.keys(allThemes);
           data-theme={theme}
         >
           <input
+            id={theme}
             type="radio"
             name="theme-radios"
             class="radio theme-controller btn btn-sm btn-block justify-start"
@@ -44,8 +46,8 @@ const themes = Object.keys(allThemes);
 </div>
 
 <script is:inline>
-function updateTheme(theme) {
-  localStorage.setItem('theme', theme);
-  document.documentElement.setAttribute('data-theme', theme);
-}
+  function updateTheme(theme) {
+    localStorage.setItem('theme', theme);
+    document.documentElement.setAttribute('data-theme', theme);
+  }
 </script>

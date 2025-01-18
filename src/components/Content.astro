@@ -77,17 +77,42 @@ of the list you'll find a love for electronic music, 3D printing, manga, speedru
       badge.src = badgeUrl;
     }
 
+    function updateSelectedTheme() {
+      const selectedTheme = document.documentElement.getAttribute('data-theme');
+      const themeList = document.getElementById('themes-menu') as HTMLUListElement | null;
+      const listItems = themeList?.querySelectorAll('li');
+
+      if (!listItems || !selectedTheme) return;
+      for (const listItem of Array.from(listItems)) {
+        const input = listItem.children[0] as HTMLInputElement | null;
+        const inputTheme = listItem.getAttribute('data-theme');
+        if (!input) continue;
+        if (inputTheme === selectedTheme) {
+          input.value = `${inputTheme} ✓`;
+          input.ariaLabel = `${inputTheme} ✓`;
+        } else {
+          input.value = inputTheme ?? '';
+          input.ariaLabel = inputTheme;
+        }
+      }
+    }
+
+    function handleTheme() {
+      updateBadgeUrl();
+      updateSelectedTheme();
+    }
+
     const observer = new MutationObserver((mutationsList) => {
       for (const mutation of mutationsList) {
         // Once the root HTML node has `data-theme` it means we can actually pull the correct theme and colors for the badge
         if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
-          updateBadgeUrl();
+          handleTheme();
         }
       }
     });
 
     // Run on initial load
-    document.addEventListener('DOMContentLoaded', updateBadgeUrl);
+    document.addEventListener('DOMContentLoaded', handleTheme);
     // Run on theme change
     observer.observe(rootElement, { attributes: true, attributeFilter: ['data-theme'] });
   </script>
