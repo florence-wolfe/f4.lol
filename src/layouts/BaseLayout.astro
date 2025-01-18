@@ -17,13 +17,13 @@ const { language = 'en', textDirection = 'ltr' } = SITE;
   <head>
     <style>
       html {
-        font-size: 1rem;
-        font-size: clamp(1rem, 3.2vw, 1.5rem);
+        font-size: 16px; /* Base size */
       }
-      /* Scale fonts for devices with a 2x device pixel ratio */
-      @media (min-resolution: 2dppx) {
+
+      /* More controlled responsive scaling */
+      @media (min-width: 768px) {
         html {
-          font-size: 200%;
+          font-size: clamp(16px, 1.5vw, 20px);
         }
       }
 
