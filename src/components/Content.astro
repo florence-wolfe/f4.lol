@@ -1,53 +1,13 @@
 ---
-import me from '~/assets/images/anime-self.png';
-const phonetic = `/ˈflɔrəns wʊlf/`;
-const description = `I'm a seasoned software engineer with a passion for all things tech. I have a loads of interests but at the top
-of the list you'll find a love for electronic music, 3D printing, manga, speedrunning, and gaming.`;
+import ContentHeader from './ContentHeader.astro';
+import ContentAboutMe from './ContentAboutMe.astro';
 ---
 
-<style>
-  .text-3d {
-    text-shadow:
-      -2px -2px 0 oklch(var(--p)),
-      2px -2px 0 oklch(var(--p)),
-      -2px 2px 0 oklch(var(--p)),
-      2px 2px 0 oklch(var(--p)),
-      -0.09em 0 0 oklch(var(--a)),
-      0.09em 0 0 oklch(var(--s));
-  }
-</style>
 <main id="main" class="grow hero bg-base-300">
   <article class="hero-content text-left">
     <section class="max-w-md">
-      <header class="flex flex-col sm:flex-row gap-4">
-        <h1 x-data="{ swapped: false }" class="text-5xl font-bold">
-          Hey there! I'm
-
-          <span
-            x-on:mouseover="swapped = true"
-            x-on:mouseout="swapped = false"
-            x-bind:class="swapped ? 'swap-active' : ''"
-            tabindex="0"
-            aria-pressed="false"
-            class="swap swap-flip"
-          >
-            <strong class="italic text-primary-content text-3d swap-off">Florence Wolfe</strong>
-            <strong class="text-primary-content text-3d swap-on" aria-hidden="true">{phonetic}</strong>
-          </span>
-        </h1>
-
-        <div class="flex flex-col">
-          <figure class="avatar w-20 h-20">
-            <div class="rounded-full ring ring-secondary ring-offset-base-100 ring-offset-2">
-              <img src={me.src} alt="Anime portrait of Flo Wolfe" />
-            </div>
-          </figure>
-          <img class="mt-2 w-32" id="pronouns-badge" alt="Pronouns Shields Badge" />
-        </div>
-      </header>
-      <p class="py-6">
-        {description}
-      </p>
+      <ContentHeader />
+      <ContentAboutMe />
     </section>
   </article>
 
