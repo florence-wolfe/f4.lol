@@ -3,7 +3,7 @@ const CONFIG = {
 
   origin: 'https://f4.lol',
   basePathname: '/',
-  trailingSlash: false,
+  trailingSlash: 'ignore',
 
   title: "f4.lol - Flo's home",
   description: 'Personal website for Flo, a software engineer and goofer. I write about programming, tech, and life.',

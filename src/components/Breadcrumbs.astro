@@ -1,15 +1,22 @@
 ---
+import TranslatedAnchor from '~/components/TranslatedAnchor.astro';
+import { getLangFromUrl, type TranslationPaths } from '../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+
 function getBreadcrumbSegments(pathname: string) {
-  const segments = pathname.split('/').filter(Boolean);
+  const segments = pathname
+    .split('/')
+    .filter(Boolean)
+    .filter((segment) => segment !== lang);
   if (!segments.length) {
     return [];
   }
 
   return segments.map((segment, index) => {
     const link = '/' + segments.slice(0, index + 1).join('/');
-
+    const translationPath = `nav.${segment}` as TranslationPaths;
     return {
-      path: segment,
+      path: translationPath,
       link: link,
     };
   });
@@ -22,11 +29,11 @@ const segments = getBreadcrumbSegments(Astro.url.pathname);
     <div class="bg-base-300 breadcrumbs text-sm p-2 ps-6 pt-4">
       <ul class="h-full">
         <li class="h-full">
-          <a href="/">Home</a>
+          <TranslatedAnchor href="/" translationPath="nav.home" />
         </li>
         {segments.map((segment) => (
           <li class="h-full">
-            <a href={segment.link}>{segment.path}</a>
+            <TranslatedAnchor href={segment.link} translationPath={segment.path} />
           </li>
         ))}
       </ul>
