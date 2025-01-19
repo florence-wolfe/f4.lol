@@ -9,6 +9,9 @@
     "description": "Une place pour apprendre de Flo Wolfe, leurs accomplissements, et intérets."
   },
   "components": {
+    "footer": {
+      "disclaimer": "Toutes les opinions ici sont les miennes et ne sont pas représentatives de mes employeurs; futur, passé et présent."
+    },
     "themeChange": {
       "title": "Changer de thème",
       "button": "Thèmes",

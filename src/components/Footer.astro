@@ -1,7 +1,8 @@
 ---
 import SocialIcon from './SocialIcon.astro';
-const disclaimer =
-  'Any and all opinions listed here are my own and not representative of my employers; future, past and present.';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 const repositoryLink = 'https://github.com/florence-wolfe/f4.lol';
 
 interface SocialIconDefinition {
@@ -90,7 +91,7 @@ const socials: SocialIconDefinition[] = [
   </div>
   <div class="w-full">
     <p class="px-4 pt-0">
-      {disclaimer}
+      {t('components.footer.disclaimer')}
     </p>
     <p class="px-4 pt-2">
       Built with Astro. See <a class="link link-secondary" href={repositoryLink} target="_blank">source code here</a>.
