@@ -10,8 +10,9 @@ import Footer from '~/components/Footer.astro';
 import { SITE } from '~/config.mjs';
 
 const { language = 'en', textDirection = 'ltr' } = SITE;
-import { getLangFromUrl } from '../i18n/utils';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <!doctype html>
@@ -49,14 +50,14 @@ const lang = getLangFromUrl(Astro.url);
     <CalScript />
     <FontAwesomeScript />
     <HtmxScript />
-    <title>f4.lol — Flo's home</title>
-    <meta name="description" content="A place to learn about Flo Wolfe, their achievements, and interests." />
+    <title>{t('global.title')}</title>
+    <meta name="description" content={t('global.description')} />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
 
   <body class="h-full flex flex-col antialiased tracking-tight">
-    <a href="#main" class="skip-link">Skip to main content</a>
+    <a href="#main" class="skip-link">{t('global.skip')}</a>
     <Header />
     <slot />
     <Footer />

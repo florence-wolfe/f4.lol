@@ -1,4 +1,4 @@
-export function getNestedValue(obj: object, path: string) {
+export function getNestedValue(obj: object, path: string): string | undefined {
   const keys = path.split('.');
   let result = obj;
 
@@ -9,5 +9,5 @@ export function getNestedValue(obj: object, path: string) {
     }
   }
 
-  return result;
+  return result as unknown as string;
 }

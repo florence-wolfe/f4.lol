@@ -16,6 +16,7 @@ type ConfigLocales = ExtractLocales<typeof config>;
 type ValidLocale = ConfigLocales[number];
 // Ensure that all imported locales match the structure of the first one
 type Translations = (typeof translations)[ValidLocale];
+export type TranslationPaths = Paths<Messages>;
 /**
  * This is some magic. Add the locale file import type to the Translations list and it'll spit out a type error if the interfaces don't match the `en` locale
  * TODO: Add specific locale in the message.
@@ -30,13 +31,11 @@ export function getLangFromUrl(url: URL) {
 }
 
 export function useTranslations(lang: ValidLocale) {
-  return function t(key: Paths<Messages>) {
+  return function t(key: TranslationPaths) {
     return (
       getNestedValue(translations[lang], key) ??
-      `[default] ${getNestedValue(translations[defaultLang], key)}` ??
+      getNestedValue(translations[defaultLang], key) ??
       `[untranslated] ${key}`
     );
   };
 }
-
-export type TranslationPaths = Paths<Messages>;

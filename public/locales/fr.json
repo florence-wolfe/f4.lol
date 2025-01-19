@@ -1,1 +1,17 @@
-{}
+{
+  "nav": {
+    "home": "Accueil",
+    "resume": "Résume"
+  },
+  "global": {
+    "title": "f4.lol - Chez Flo",
+    "skip": "Passer au contenu principal.",
+    "description": "Une place pour apprendre de Flo Wolfe, leurs accomplissements, et intérets."
+  },
+  "404": {
+    "title": "Erreur 404",
+    "error": "Erreur",
+    "pageNotFound": "Oups, nous ne pouvons pas trouver cette page.",
+    "otherThings": "Ne t'inquiète  pas, vous pouvez trouver pleins d'autres choses sur la page d'accueil."
+  }
+}

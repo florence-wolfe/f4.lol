@@ -1,8 +1,17 @@
 {
   "nav": {
-    "home": "from json"
+    "home": "Home",
+    "resume": "Resume"
   },
-  "homepage": {
-    "skip": "Skip to main content."
+  "global": {
+    "title": "f4.lol — Flo's home",
+    "skip": "Skip to main content.",
+    "description": "A place to learn about Flo Wolfe, their achievements, and interests."
+  },
+  "404": {
+    "title": "Error 404",
+    "error": "Error",
+    "pageNotFound": "Sorry, we couldn't find this page.",
+    "otherThings": "But dont worry, you can find plenty of other things on our homepage."
   }
 }
