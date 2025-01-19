@@ -1,5 +1,6 @@
 ---
 import me from '~/assets/images/anime-self.png';
+import flag from '~/assets/images/transgender_pride_flag.png';
 const phonetic = `/ˈflɔrəns wʊlf/`;
 ---
 
@@ -40,13 +41,8 @@ const phonetic = `/ˈflɔrəns wʊlf/`;
       </figure>
     </div>
     <div class="flex items-start space-x-1 mt-2">
-      <img class="h-4" id="pronouns-badge" alt="Pronouns Shields Badge" />
-      <img
-        crossorigin="anonymous"
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Transgender_Pride_flag.svg/1024px-Transgender_Pride_flag.svg.png"
-        class="h-4"
-        alt="Transgender Pride Flag"
-      />
+      <img class="h-full max-h-4" id="pronouns-badge" alt="Pronouns Shields Badge" />
+      <img src={flag.src} class="max-h-4" alt="Transgender Pride Flag" />
     </div>
   </div>
 </header>
