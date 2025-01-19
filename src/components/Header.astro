@@ -1,6 +1,10 @@
 ---
 import LanguageChange from './LanguageChange.astro';
 import ThemeChange from './ThemeChange.astro';
+import TranslatedAnchor from './TranslatedAnchor.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <style>
@@ -10,12 +14,12 @@ import ThemeChange from './ThemeChange.astro';
 </style>
 <header class="navbar bg-base-100">
   <nav class="navbar-start">
-    <a href="/" aria-label="Home" class="btn btn-ghost normal-case text-xl">f4.lol</a>
+    <TranslatedAnchor href="/" aria-label={t('nav.home')} text="f4.lol" class="btn btn-ghost normal-case text-xl" />
     <span class="header-name text-lg ms-2">Florence Wolfe</span>
   </nav>
   <div class="navbar-end">
     <ul class="menu menu-horizontal px-1">
-      <li><a href="/resume">Resume</a></li>
+      <li><TranslatedAnchor href="/resume" translationPath="nav.resume" /></li>
     </ul>
     <LanguageChange />
     <ThemeChange />

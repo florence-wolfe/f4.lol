@@ -8,10 +8,27 @@
     "skip": "Skip to main content.",
     "description": "A place to learn about Flo Wolfe, their achievements, and interests."
   },
-  "404": {
-    "title": "Error 404",
-    "error": "Error",
-    "pageNotFound": "Sorry, we couldn't find this page.",
-    "otherThings": "But dont worry, you can find plenty of other things on our homepage."
+  "components": {
+    "themeChange": {
+      "title": "Change theme",
+      "button": "Themes",
+      "label": "Theme menu"
+    }
+  },
+  "pages": {
+    "resume": {
+      "meta": {
+        "title": "Flo's resume",
+        "description": "Professional resume for Florence Wolfe"
+      },
+      "title": "Resume",
+      "info": "This resume is automatically generated and updated when the website gets deployed."
+    },
+    "404": {
+      "title": "Error 404",
+      "error": "Error",
+      "pageNotFound": "Sorry, we couldn't find this page.",
+      "otherThings": "But dont worry, you can find plenty of other things on our homepage."
+    }
   }
 }

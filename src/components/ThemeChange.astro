@@ -1,19 +1,22 @@
 ---
 import allThemes from 'daisyui/src/theming/themes';
 const themes = Object.keys(allThemes);
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
-<div title="Change Theme" class="dropdown dropdown-end z-10">
+<div title={t('components.themeChange.title')} class="dropdown dropdown-end z-10">
   <button aria-haspopup="true" aria-label="Themes menu button" class="btn btn-sm normal-case btn-accent">
     <i class="fa-solid fa-palette" class="w-2"></i>
-    <span class="hidden font-normal md:inline">Themes</span>
+    <span class="hidden font-normal md:inline">{t('components.themeChange.button')}</span>
     <i class="fa-solid fa-chevron-down w-2"></i>
   </button>
 
   <menu
     tabindex="0"
     role="menu"
-    aria-label="Themes menu"
+    aria-label={t('components.themeChange.label')}
     class="dropdown-content h-[70vh] overflow-y-auto z-[1] p-2 shadow-2xl bg-base-300 rounded-box w-52 [&>li:not(:last-child)]:mb-1"
     id="themes-menu"
   >
