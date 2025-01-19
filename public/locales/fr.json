@@ -16,6 +16,15 @@
     }
   },
   "pages": {
+    "home": {
+      "avatarAlt": "Avatar en style Anime de Flo Wolfe",
+      "pronounsBadgeAlt": "Insigne de Pronouns Shields",
+      "transgenderFlagAlt": "Drapeau de la Fièrté Transgenre",
+      "greeting": "Salut! Moi c'est",
+      "description": "Je suis une développeuse logicielle expérimentée avec une vraie passion pour tout ce qui est tech. J’ai plein d’intérêts, mais en haut de la liste, tu trouveras mon amour pour la musique électronique, l’impression 3D, les mangas, le speedrunning et les jeux vidéo.",
+      "pride": "En tant que personne transféminine non-binaire, j'embrasse pleinement mon parcours et j'adore connecter avec d'autres membres de la communauté 2SLGBTQIA+.",
+      "location": "Je vis et travaille à Tiohtià:ke/Montréal, sur le territoire traditionnel de la Nation Kanien’kehá:ka."
+    },
     "resume": {
       "meta": {
         "title": "Le CV de Flo",

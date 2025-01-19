@@ -2,6 +2,9 @@
 import me from '~/assets/images/anime-self.png';
 import flag from '~/assets/images/transgender_pride_flag.png';
 const phonetic = `/ˈflɔrəns wʊlf/`;
+import { getLangFromUrl, useTranslations, type TranslationPaths } from '../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <style>
@@ -17,7 +20,7 @@ const phonetic = `/ˈflɔrəns wʊlf/`;
 </style>
 <header class="flex flex-col sm:flex-row gap-4">
   <h1 x-data="{ swapped: false }" class="text-5xl font-bold">
-    Hey there! I'm
+    {t('pages.home.greeting')}
 
     <span
       x-on:mouseover="swapped = true"
@@ -36,13 +39,13 @@ const phonetic = `/ˈflɔrəns wʊlf/`;
     <div class="w-full">
       <figure class="avatar w-20 h-20">
         <div class="rounded-full ring ring-secondary ring-offset-base-100 ring-offset-2">
-          <img src={me.src} alt="Anime portrait of Flo Wolfe" />
+          <img src={me.src} alt={t('pages.home.avatarAlt')} />
         </div>
       </figure>
     </div>
     <div class="flex items-start space-x-1 mt-2">
-      <img class="h-full max-h-4" id="pronouns-badge" alt="Pronouns Shields Badge" />
-      <img src={flag.src} class="max-h-4" alt="Transgender Pride Flag" />
+      <img class="h-full max-h-4" id="pronouns-badge" alt={t('pages.home.pronounsBadgeAlt')} />
+      <img src={flag.src} class="max-h-4" alt={t('pages.home.transgenderFlagAlt')} />
     </div>
   </div>
 </header>
