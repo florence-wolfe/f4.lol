@@ -15,7 +15,7 @@ type ConfigLocales = ExtractLocales<typeof config>;
 
 type ValidLocale = ConfigLocales[number];
 // Ensure that all imported locales match the structure of the first one
-type Translations = (typeof translations)[ValidLocale];
+type Translations = [typeof import('../../public/locales/en.json'), typeof import('../../public/locales/fr.json')];
 export type TranslationPaths = Paths<Messages>;
 /**
  * This is some magic. Add the locale file import type to the Translations list and it'll spit out a type error if the interfaces don't match the `en` locale

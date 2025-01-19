@@ -1,18 +1,17 @@
 ---
 import { getRelativeLocaleUrl } from 'astro:i18n';
-import { getLangFromUrl, useTranslations, type TranslationPaths } from '../i18n/utils';
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+import { getLangFromUrl, useTranslations, type TranslationPaths, type ValidLocale } from '../i18n/utils';
+const urlLang = getLangFromUrl(Astro.url);
+const t = useTranslations(urlLang);
 
 interface Props {
   href: string;
   translationPath?: TranslationPaths;
-  text?: string;
   class?: string;
+  lang?: ValidLocale;
 }
-const { href, translationPath, text, class: classNames } = Astro.props;
-const link = getRelativeLocaleUrl(lang, href);
-const content = translationPath ? t(translationPath) : (text ?? '');
+const { href, translationPath, class: classNames, lang } = Astro.props;
+const link = getRelativeLocaleUrl(lang ?? urlLang, href);
 ---
 
-<a class={classNames} href={link}>{content}</a>
+<a class={classNames} href={link}>{translationPath ? t(translationPath) : <slot />}</a>

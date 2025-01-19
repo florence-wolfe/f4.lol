@@ -1,14 +1,46 @@
 ---
-import { languages } from '../i18n/ui';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import TranslatedAnchor from './TranslatedAnchor.astro';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const pathname = Astro.url.pathname.split('/').filter(Boolean);
+// strip the locale from the path
+const [start, ...paths] = pathname;
+const path = start === lang ? paths.join('/') : pathname.join('/');
 ---
 
-<ul>
-  <astro:language-switcher></astro:language-switcher>
-  <!-- { -->
-  <!--   Object.entries(languages).map(([lang, label]) => ( -->
-  <!--     <li> -->
-  <!--       <a href={`/${lang}/`}>{label}</a> -->
-  <!--     </li> -->
-  <!--   )) -->
-  <!-- } -->
-</ul>
+<div title={t('components.languageChange.title')} class="dropdown dropdown-end z-10 me-2">
+  <button
+    aria-haspopup="true"
+    aria-label={t('components.languageChange.label')}
+    class="btn btn-sm normal-case btn-secondary"
+  >
+    <i class="fa-solid fa-language" class="w-2"></i>
+    <span class="hidden font-normal md:inline">{t('components.languageChange.button')}</span>
+    <i class="fa-solid fa-chevron-down w-2"></i>
+  </button>
+
+  <menu
+    tabindex="0"
+    role="menu"
+    aria-label={t('components.languageChange.label')}
+    class="dropdown-content z-[1] p-2 shadow-2xl bg-base-300 rounded-box w-52 [&>li:not(:last-child)]:mb-1"
+  >
+    <li data-act-class="[&_svg]:visible" class="relative overflow-hidden btn-outline hover:bg-transparent">
+      <TranslatedAnchor
+        class="radio btn btn-sm btn-block justify-start"
+        translationPath="components.languageChange.english"
+        href={path}
+        lang="en"
+      />
+    </li>
+    <li data-act-class="[&_svg]:visible" class="relative overflow-hidden btn-outline hover:bg-transparent">
+      <TranslatedAnchor
+        class="radio btn btn-sm btn-block justify-start"
+        translationPath="components.languageChange.french"
+        href={path}
+        lang="fr"
+      />
+    </li>
+  </menu>
+</div>

@@ -12,6 +12,13 @@
     "footer": {
       "disclaimer": "Toutes les opinions ici sont les miennes et ne sont pas représentatives de mes employeurs; futur, passé et présent."
     },
+    "languageChange": {
+      "title": "Changer de langue",
+      "button": "Langues",
+      "label": "Menu langues",
+      "english": "Anglais",
+      "french": "Français"
+    },
     "themeChange": {
       "title": "Changer de thème",
       "button": "Thèmes",

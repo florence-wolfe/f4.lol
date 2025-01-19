@@ -12,6 +12,13 @@
     "footer": {
       "disclaimer": "Any and all opinions listed here are my own and not representative of my employers; future, past and present."
     },
+    "languageChange": {
+      "title": "Change language",
+      "button": "Languages",
+      "label": "Language menu",
+      "english": "English",
+      "french": "French"
+    },
     "themeChange": {
       "title": "Change theme",
       "button": "Themes",

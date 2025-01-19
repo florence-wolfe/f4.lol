@@ -2,7 +2,7 @@
 import me from '~/assets/images/anime-self.png';
 import flag from '~/assets/images/transgender_pride_flag.png';
 const phonetic = `/ˈflɔrəns wʊlf/`;
-import { getLangFromUrl, useTranslations, type TranslationPaths } from '../i18n/utils';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
@@ -45,7 +45,7 @@ const t = useTranslations(lang);
     </div>
     <div class="flex items-start space-x-1 mt-2">
       <img class="h-full max-h-4" id="pronouns-badge" alt={t('pages.home.pronounsBadgeAlt')} />
-      <img src={flag.src} class="max-h-4" alt={t('pages.home.transgenderFlagAlt')} />
+      <img src={flag.src} class="max-h-4 h-full w-auto" alt={t('pages.home.transgenderFlagAlt')} />
     </div>
   </div>
 </header>
