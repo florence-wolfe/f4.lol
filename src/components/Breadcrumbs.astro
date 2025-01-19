@@ -1,0 +1,35 @@
+---
+function getBreadcrumbSegments(pathname: string) {
+  const segments = pathname.split('/').filter(Boolean);
+  if (!segments.length) {
+    return [];
+  }
+
+  return segments.map((segment, index) => {
+    const link = '/' + segments.slice(0, index + 1).join('/');
+
+    return {
+      path: segment,
+      link: link,
+    };
+  });
+}
+const segments = getBreadcrumbSegments(Astro.url.pathname);
+---
+
+{
+  !segments.length ? null : (
+    <div class="bg-base-300 breadcrumbs text-sm p-2 ps-6 pt-4">
+      <ul class="h-full">
+        <li class="h-full">
+          <a href="/">Home</a>
+        </li>
+        {segments.map((segment) => (
+          <li class="h-full">
+            <a href={segment.link}>{segment.path}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}

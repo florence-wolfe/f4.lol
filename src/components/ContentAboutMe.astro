@@ -6,6 +6,6 @@ const aboutMe = `I live and work in Tiohtià:ke/Montréal, the traditional terri
 const sections = [description, pride, aboutMe];
 ---
 
-<article>
-  {sections.map((section) => <p class="py-3 last:pb-0">{section}</p>)}
+<article class="prose">
+  {sections.map((section) => <p>{section}</p>)}
 </article>

@@ -1,5 +1,6 @@
 ---
 import Layout from '~/layouts/BaseLayout.astro';
+import Breadcrumbs from '~/components/Breadcrumbs.astro';
 
 const meta = {
   title: "Flo's resume",
@@ -12,6 +13,7 @@ const iframeSrc = `https://mozilla.github.io/pdf.js/web/viewer.html?file=${resum
 ---
 
 <Layout {meta}>
+  <Breadcrumbs />
   <main class="grow hero bg-base-300">
     <div class="p-4 w-full h-full">
       <article class="prose">
