@@ -10,7 +10,9 @@
   },
   "components": {
     "footer": {
-      "disclaimer": "Toutes les opinions ici sont les miennes et ne sont pas représentatives de mes employeurs; futur, passé et présent."
+      "disclaimer": "Toutes les opinions ici sont les miennes et ne sont pas représentatives de mes employeurs; futur, passé et présent.",
+      "built": "Developpé avec Astro.",
+      "sourceCodeHere": "Code source ici."
     },
     "languageChange": {
       "title": "Changer de langue",

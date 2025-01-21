@@ -1,1 +1,5 @@
-<meta http-equiv="refresh" content="0;url=/en/" />
+---
+import config from '../../astro.config.mjs';
+const defaultLang = config.i18n?.defaultLocale ?? 'en';
+return Astro.redirect(Astro.preferredLocale ?? defaultLang);
+---
