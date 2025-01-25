@@ -5,6 +5,7 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import { SITE } from './src/config.mjs';
 import alpinejs from '@astrojs/alpinejs';
+import cloudflare from '@astrojs/cloudflare';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
@@ -12,6 +13,7 @@ export default defineConfig({
   base: SITE.basePathname,
   trailingSlash: SITE.trailingSlash ?? 'never',
   output: 'static',
+
   i18n: {
     locales: ['en', 'fr'],
     defaultLocale: 'en',
@@ -19,6 +21,7 @@ export default defineConfig({
       prefixDefaultLocale: true,
     },
   },
+
   integrations: [
     tailwind({
       config: {
@@ -31,6 +34,7 @@ export default defineConfig({
     }),
     alpinejs(),
   ],
+
   vite: {
     resolve: {
       alias: {
@@ -38,4 +42,6 @@ export default defineConfig({
       },
     },
   },
+
+  adapter: cloudflare(),
 });
