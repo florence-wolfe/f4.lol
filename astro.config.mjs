@@ -5,14 +5,14 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import { SITE } from './src/config.mjs';
 import alpinejs from '@astrojs/alpinejs';
-import cloudflare from '@astrojs/cloudflare';
+import netlify from '@astrojs/netlify';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   site: SITE.origin,
   base: SITE.basePathname,
   trailingSlash: SITE.trailingSlash ?? 'never',
-  output: 'static',
+  output: 'server',
 
   i18n: {
     locales: ['en', 'fr'],
@@ -29,8 +29,10 @@ export default defineConfig({
       },
     }),
     sitemap({
-      locales: ['en-CA', 'fr-CA'],
-      defaultLocale: 'en',
+      i18n: {
+        locales: ['en-CA', 'fr-CA'],
+        defaultLocale: 'en',
+      },
     }),
     alpinejs(),
   ],
@@ -43,5 +45,5 @@ export default defineConfig({
     },
   },
 
-  adapter: cloudflare(),
+  adapter: netlify(),
 });
