@@ -34,7 +34,7 @@ const t = useTranslations(lang);
         x-init={`$watch(
           'activeTheme',
           (updatedTheme) => {
-            text = getThemeText(updatedTheme, theme);
+            text = updatedTheme === theme ? theme + ' ✓' : theme;
           }
         )`}
       >
@@ -65,10 +65,6 @@ const t = useTranslations(lang);
     function updateTheme(theme) {
       localStorage.setItem('theme', theme);
       document.documentElement.setAttribute('data-theme', theme);
-    }
-
-    function getThemeText(updatedTheme, currentTheme) {
-      return updatedTheme === currentTheme ? `${currentTheme} ✓` : currentTheme;
     }
   </script>
 </div>

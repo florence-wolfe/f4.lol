@@ -47,7 +47,7 @@ const t = useTranslations(lang);
       x-data="{
         badgeUrl: '',
         theme: '',
-        updateBadgeUrl() \{ this.badgeUrl = getBadgeUrl(); \}
+        updateBadgeUrl() { this.badgeUrl = getBadgeUrl(); }
       }"
       x-init="updateBadgeUrl"
       @update-theme.window="updateBadgeUrl()"
