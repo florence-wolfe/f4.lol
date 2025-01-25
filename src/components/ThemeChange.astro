@@ -19,38 +19,56 @@ const t = useTranslations(lang);
     aria-label={t('components.themeChange.label')}
     class="dropdown-content h-[70vh] overflow-y-auto z-[1] p-2 shadow-2xl bg-base-300 rounded-box w-52 [&>li:not(:last-child)]:mb-1"
     id="themes-menu"
+    x-data={`{
+      themes: ${JSON.stringify(themes)},
+      activeTheme: ''
+    }`}
+    x-init="activeTheme = localStorage.getItem('theme') || themes[0];"
   >
-    {
-      themes.map((theme) => (
-        <li
-          data-act-class="[&_svg]:visible"
-          class="relative overflow-hidden btn-outline hover:bg-transparent"
-          data-theme={theme}
-        >
-          <input
-            id={theme}
-            type="radio"
-            name="theme-radios"
-            class="radio theme-controller btn btn-sm btn-block justify-start"
-            aria-label={theme}
-            value={theme}
-            onchange={`updateTheme('${theme}');`}
-          />
-          <div class="absolute right-2 top-1/2 h-1/2 transform -translate-y-1/2 flex flex-shrink-0 flex-wrap gap-1">
-            <div class="bg-primary w-2 rounded" />
-            <div class="bg-secondary w-2 rounded" />
-            <div class="bg-accent w-2 rounded" />
-            <div class="bg-neutral w-2 rounded" />
-          </div>
-        </li>
-      ))
-    }
+    <template x-for="theme in themes">
+      <li
+        data-act-class="[&_svg]:visible"
+        class="relative overflow-hidden btn-outline hover:bg-transparent"
+        x-bind:data-theme="theme"
+        x-data="{ text: theme }"
+        x-init={`$watch(
+          'activeTheme',
+          (updatedTheme) => {
+            text = getThemeText(updatedTheme, theme);
+          }
+        )`}
+      >
+        <input
+          x-bind:id="theme"
+          type="radio"
+          name="theme-radios"
+          class="radio theme-controller btn btn-sm btn-block justify-start"
+          x-bind:aria-label="text"
+          x-bind:value="text"
+          @change={`
+            updateTheme(theme);
+            activeTheme = theme
+            $dispatch('update-theme', { theme: theme })
+          `}
+        />
+        <div class="absolute right-2 top-1/2 h-1/2 transform -translate-y-1/2 flex flex-shrink-0 flex-wrap gap-1">
+          <div class="bg-primary w-2 rounded"></div>
+          <div class="bg-secondary w-2 rounded"></div>
+          <div class="bg-accent w-2 rounded"></div>
+          <div class="bg-neutral w-2 rounded"></div>
+        </div>
+      </li>
+    </template>
   </menu>
-</div>
 
-<script is:inline>
-  function updateTheme(theme) {
-    localStorage.setItem('theme', theme);
-    document.documentElement.setAttribute('data-theme', theme);
-  }
-</script>
+  <script is:inline>
+    function updateTheme(theme) {
+      localStorage.setItem('theme', theme);
+      document.documentElement.setAttribute('data-theme', theme);
+    }
+
+    function getThemeText(updatedTheme, currentTheme) {
+      return updatedTheme === currentTheme ? `${currentTheme} ✓` : currentTheme;
+    }
+  </script>
+</div>

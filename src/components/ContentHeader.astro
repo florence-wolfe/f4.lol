@@ -43,9 +43,39 @@ const t = useTranslations(lang);
         </div>
       </figure>
     </div>
-    <div class="flex items-start space-x-1 mt-2">
-      <img class="h-full max-h-4" id="pronouns-badge" alt={t('pages.home.pronounsBadgeAlt')} />
+    <div
+      x-data="{
+        badgeUrl: '',
+        theme: '',
+        updateBadgeUrl() \{ this.badgeUrl = getBadgeUrl(); \}
+      }"
+      x-init="updateBadgeUrl"
+      @update-theme.window="updateBadgeUrl()"
+      class="flex items-start space-x-1 mt-2"
+    >
+      <img x-bind:src="badgeUrl" class="h-full max-h-4" id="pronouns-badge" alt={t('pages.home.pronounsBadgeAlt')} />
       <img src={flag.src} class="max-h-4 h-full w-auto" alt={t('pages.home.transgenderFlagAlt')} />
     </div>
   </div>
 </header>
+
+<script is:inline>
+  function getBadgeUrl() {
+    const rootElement = document.documentElement;
+    function getCssVariableValue(varName) {
+      return getComputedStyle(rootElement)
+        .getPropertyValue(varName)
+        .trim()
+        .split(' ')
+        .map((value) => (value.includes('%') ? parseFloat(value) / 100 : parseFloat(value)));
+    }
+    const labelOklch = getCssVariableValue('--p');
+    const badgeOklch = getCssVariableValue('--s');
+    const labelColor = chroma.oklch(...labelOklch).hex();
+    const badgeColor = chroma.oklch(...badgeOklch).hex();
+    const labelColorEncoded = encodeURIComponent(labelColor);
+    const badgeColorEncoded = encodeURIComponent(badgeColor);
+
+    return `https://img.shields.io/endpoint?url=https%3A%2F%2Fpronoundb.org%2Fshields%2F65db97a4cf2d0494c7de8e98.json&style=flat&labelColor=${labelColorEncoded}&color=${badgeColorEncoded}`;
+  }
+</script>
