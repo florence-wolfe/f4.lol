@@ -5,7 +5,6 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import { SITE } from './src/config.mjs';
 import alpinejs from '@astrojs/alpinejs';
-import vercel from '@astrojs/vercel';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
@@ -17,9 +16,6 @@ export default defineConfig({
   i18n: {
     locales: ['en', 'fr'],
     defaultLocale: 'en',
-    routing: {
-      prefixDefaultLocale: true,
-    },
   },
 
   integrations: [
@@ -44,6 +40,4 @@ export default defineConfig({
       },
     },
   },
-
-  adapter: vercel(),
 });

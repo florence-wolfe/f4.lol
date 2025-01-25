@@ -1,7 +1,16 @@
 ---
-export const prerender = false;
-import config from '../../astro.config.mjs';
-const defaultLang = config.i18n?.defaultLocale ?? 'en';
-
-return Astro.rewrite(`/${Astro.preferredLocale ?? defaultLang}/`);
+import Layout from '~/layouts/BaseLayout.astro';
+import Content from '~/components/Content.astro';
+import { getLangFromUrl, useTranslations } from '~/i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const meta = {
+  title: t('global.title'),
+  description: t('global.description'),
+  dontUseTitleTemplate: true,
+};
 ---
+
+<Layout {meta}>
+  <Content />
+</Layout>
