@@ -32,10 +32,6 @@ export function getLangFromUrl(url: URL) {
 
 export function useTranslations(lang: ValidLocale) {
   return function t(key: TranslationPaths) {
-    return (
-      getNestedValue(translations[lang], key) ??
-      getNestedValue(translations[defaultLang], key) ??
-      `[untranslated] ${key}`
-    );
+    return getNestedValue(translations[lang], key) ?? getNestedValue(translations[defaultLang], key) ?? key;
   };
 }

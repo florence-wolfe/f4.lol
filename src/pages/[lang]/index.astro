@@ -1,0 +1,25 @@
+---
+import type { GetStaticPaths } from "astro";
+import Layout from '~/layouts/BaseLayout.astro';
+import Content from '~/components/Content.astro';
+import { getLangFromUrl, useTranslations } from '~/i18n/utils';
+
+export const getStaticPaths = (() => {
+  return [
+    { params: { lang: 'en' } },
+    { params: { lang: 'fr' } }
+  ];
+}) satisfies GetStaticPaths;
+
+const { lang } = Astro.params;
+const t = useTranslations(lang);
+const meta = {
+  title: t('global.title'),
+  description: t('global.description'),
+  dontUseTitleTemplate: true,
+};
+---
+
+<Layout {meta}>
+  <Content />
+</Layout>

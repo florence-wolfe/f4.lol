@@ -1,10 +1,15 @@
 ---
 import Layout from '~/layouts/BaseLayout.astro';
 import Breadcrumbs from '~/components/Breadcrumbs.astro';
-import { getLangFromUrl, useTranslations } from '~/i18n/utils';
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+import { useTranslations } from '~/i18n/utils';
+import type { GetStaticPaths } from 'astro';
 
+export const getStaticPaths = (() => {
+  return [{ params: { lang: 'en' } }, { params: { lang: 'fr' } }];
+}) satisfies GetStaticPaths;
+
+const { lang } = Astro.params;
+const t = useTranslations(lang);
 const meta = {
   title: t('pages.resume.meta.title'),
   description: t('pages.resume.meta.description'),
