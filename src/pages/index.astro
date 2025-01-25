@@ -1,5 +1,7 @@
 ---
+export const prerender = false;
 import config from '../../astro.config.mjs';
 const defaultLang = config.i18n?.defaultLocale ?? 'en';
+
 return Astro.rewrite(`/${Astro.preferredLocale ?? defaultLang}/`);
 ---
