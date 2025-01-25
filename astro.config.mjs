@@ -25,7 +25,10 @@ export default defineConfig({
         applyBaseStyles: false,
       },
     }),
-    sitemap(),
+    sitemap({
+      locales: ['en-CA', 'fr-CA'],
+      defaultLocale: 'en',
+    }),
     alpinejs(),
   ],
   vite: {
