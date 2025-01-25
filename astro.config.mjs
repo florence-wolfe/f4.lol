@@ -12,7 +12,7 @@ export default defineConfig({
   site: SITE.origin,
   base: SITE.basePathname,
   trailingSlash: SITE.trailingSlash ?? 'never',
-  output: 'server',
+  output: 'static',
 
   i18n: {
     locales: ['en', 'fr'],
