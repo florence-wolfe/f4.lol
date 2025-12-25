@@ -1,9 +1,11 @@
 ---
-import allThemes from 'daisyui/src/theming/themes';
+import allThemes from 'daisyui/theme/object';
 const themes = Object.keys(allThemes);
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const radioClasses =
+  'before:content-none after:flex after:h-full after:items-center after:pl-1 after:justify-start theme-controller btn btn-sm btn-block justify-start';
 ---
 
 <div title={t('components.themeChange.title')} class="dropdown dropdown-end z-10">
@@ -28,21 +30,24 @@ const t = useTranslations(lang);
     <template x-for="theme in themes">
       <li
         data-act-class="[&_svg]:visible"
-        class="relative overflow-hidden btn-outline hover:bg-transparent"
+        class="relative overflow-hidden btn-outline bg-transparent"
         x-bind:data-theme="theme"
         x-data="{ text: theme }"
-        x-init={`$watch(
-          'activeTheme',
-          (updatedTheme) => {
-            text = updatedTheme === theme ? theme + ' ✓' : theme;
-          }
-        )`}
+        x-init={`
+          text = activeTheme === theme ? theme + ' ✓' : theme;
+          $watch(
+            'activeTheme',
+            (updatedTheme) => {
+              text = updatedTheme === theme ? theme + ' ✓' : theme;
+            }
+          )
+        `}
       >
         <input
           x-bind:id="theme"
           type="radio"
           name="theme-radios"
-          class="radio theme-controller btn btn-sm btn-block justify-start"
+          class={radioClasses}
           x-bind:aria-label="text"
           x-bind:value="text"
           @change={`

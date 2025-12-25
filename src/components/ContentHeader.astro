@@ -10,12 +10,12 @@ const t = useTranslations(lang);
 <style>
   .text-3d {
     text-shadow:
-      -2px -2px 0 oklch(var(--p)),
-      2px -2px 0 oklch(var(--p)),
-      -2px 2px 0 oklch(var(--p)),
-      2px 2px 0 oklch(var(--p)),
-      -0.09em 0 0 oklch(var(--a)),
-      0.09em 0 0 oklch(var(--s));
+      -2px -2px 0 var(--color-primary),
+      2px -2px 0 var(--color-primary),
+      -2px 2px 0 var(--color-primary),
+      2px 2px 0 var(--color-primary),
+      -0.09em 0 0 var(--color-accent),
+      0.09em 0 0 var(--color-secondary);
   }
 </style>
 <header class="flex flex-col sm:flex-row gap-4">
@@ -62,20 +62,19 @@ const t = useTranslations(lang);
 <script is:inline>
   function getBadgeUrl() {
     const rootElement = document.documentElement;
+    const oklchRegex = /oklch\(\s*(?<lightness>[0-9.]+)%?\s+(?<chroma>[0-9.]+)\s+(?<hue>[0-9.]+)(?:deg)?\s*(?:\/\s*(?<alpha>[0-9.]+)%?)?\s*\)/;
     function getCssVariableValue(varName) {
-      return getComputedStyle(rootElement)
-        .getPropertyValue(varName)
-        .trim()
-        .split(' ')
-        .map((value) => (value.includes('%') ? parseFloat(value) / 100 : parseFloat(value)));
+      const cssVariable = getComputedStyle(rootElement).getPropertyValue(varName)
+      const match = cssVariable.match(oklchRegex);
+      return [match.groups.lightness / 100, match.groups.chroma, match.groups.hue, match.groups.alpha];
     }
-    const labelOklch = getCssVariableValue('--p');
-    const badgeOklch = getCssVariableValue('--s');
+    const labelOklch = getCssVariableValue('--color-primary');
+    const badgeOklch = getCssVariableValue('--color-secondary');
     const labelColor = chroma.oklch(...labelOklch).hex();
     const badgeColor = chroma.oklch(...badgeOklch).hex();
     const labelColorEncoded = encodeURIComponent(labelColor);
     const badgeColorEncoded = encodeURIComponent(badgeColor);
 
-    return `https://img.shields.io/endpoint?url=https%3A%2F%2Fpronoundb.org%2Fshields%2F65db97a4cf2d0494c7de8e98.json&style=flat&labelColor=${labelColorEncoded}&color=${badgeColorEncoded}`;
+    return `https://img.shields.io/endpoint?url=https%3A%2F%2Fpronoundb.org%2Fshields%2F018de1c858a0736caa790494c7de8e98.json&style=flat&labelColor=${labelColorEncoded}&color=${badgeColorEncoded}`;
   }
 </script>

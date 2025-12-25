@@ -7,6 +7,8 @@ const pathname = Astro.url.pathname.split('/').filter(Boolean);
 // strip the locale from the path
 const [start, ...paths] = pathname;
 const path = start === lang ? paths.join('/') : pathname.join('/');
+const itemClasses = 'relative overflow-hidden btn-outline bg-transparent';
+const linkClasses = 'before:content-none after:content-none btn btn-sm btn-block h-full items-center';
 ---
 
 <div title={t('components.languageChange.title')} class="dropdown dropdown-end z-10 me-2">
@@ -26,21 +28,17 @@ const path = start === lang ? paths.join('/') : pathname.join('/');
     aria-label={t('components.languageChange.label')}
     class="dropdown-content z-[1] p-2 shadow-2xl bg-base-300 rounded-box w-52 [&>li:not(:last-child)]:mb-1"
   >
-    <li data-act-class="[&_svg]:visible" class="relative overflow-hidden btn-outline hover:bg-transparent">
-      <TranslatedAnchor
-        class="radio btn btn-sm btn-block justify-start"
-        translationPath="components.languageChange.english"
-        href={path}
-        lang="en"
-      />
+    <li data-act-class="[&_svg]:visible" class={itemClasses}>
+      <TranslatedAnchor class={linkClasses} href={path} lang="en">
+        {t('components.languageChange.english')}
+        {lang === 'en' && ' ✓'}
+      </TranslatedAnchor>
     </li>
-    <li data-act-class="[&_svg]:visible" class="relative overflow-hidden btn-outline hover:bg-transparent">
-      <TranslatedAnchor
-        class="radio btn btn-sm btn-block justify-start"
-        translationPath="components.languageChange.french"
-        href={path}
-        lang="fr"
-      />
+    <li data-act-class="[&_svg]:visible" class="relative overflow-hidden btn-outline bg-transparent">
+      <TranslatedAnchor class={linkClasses} href={path} lang="fr">
+        {t('components.languageChange.french')}
+        {lang === 'fr' && ' ✓'}
+      </TranslatedAnchor>
     </li>
   </menu>
 </div>

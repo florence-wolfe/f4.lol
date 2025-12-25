@@ -1,10 +1,10 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
-import { SITE } from './src/config.mjs';
 import alpinejs from '@astrojs/alpinejs';
+import tailwincss from '@tailwindcss/vite'
+import { SITE } from './src/config.mjs';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
@@ -19,11 +19,6 @@ export default defineConfig({
   },
 
   integrations: [
-    tailwind({
-      config: {
-        applyBaseStyles: false,
-      },
-    }),
     sitemap({
       i18n: {
         locales: ['en-CA', 'fr-CA'],
@@ -34,6 +29,7 @@ export default defineConfig({
   ],
 
   vite: {
+    plugins: [tailwincss()],
     resolve: {
       alias: {
         '~': path.resolve(__dirname, './src'),
